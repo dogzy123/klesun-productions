@@ -1,0 +1,109 @@
+
+.header {
+  width: 100%;
+  display: block;
+  position: fixed;
+  top: 0;
+  height: 55px;
+  opacity: 1;
+}
+
+.container {
+  display: block;
+  width: 1220px;
+  margin: auto;
+}
+
+.mainSection {
+  width: 100%;
+
+  .introSection {
+    height: calc(60vh + 86px);
+    background: linear-gradient(30deg, #7e94e4, #8db7a6);
+
+    .introSectionInner {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .introSectionTitle {
+        font-size: 72px;
+        font-weight: 700;
+        color: #2b323e;
+        text-align: center;
+        margin: 0;
+      }
+    }
+  }
+
+  .secondarySection {
+    //height: calc(64vh + 36px);
+
+    .secondarySectionMain {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .secondarySectionMainContainer {
+        padding: 64px;
+
+        .secondarySectionMainTitle {
+          font-size: 32px;
+          text-align: center;
+        }
+
+        .secondarySectionMainText {
+          text-align: center;
+        }
+      }
+    }
+
+    .secondaryPointsDivider {
+      width: 50%;
+      margin: 28px auto;
+      min-height: 50px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+
+      .secondaryPointsDividerPoint {
+        width: 28px;
+        height: 28px;
+        border-radius: 18px;
+        border: 8px solid;
+        opacity: 0.4;
+      }
+    }
+
+    .secondarySectionColumns {
+      //height: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      .secondarySectionInnerColumn {
+        display: flex;
+        flex: 1;
+
+        .secondaryColumnContainer {
+          padding: 64px;
+          width: 100%;
+
+          .secondaryColumnContainerHeader {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            .secondaryColumnContainerTitle {
+              text-align: center;
+              font-size: 24px;
+              font-weight: 500;
+            }
+          }
+        }
+      }
+    }
+  }
+}

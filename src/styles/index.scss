@@ -24,3 +24,7 @@ h2, h3, h4, h5, span, p {
 *::before {
   box-sizing: border-box;
 }
+
+.app {
+  overflow-x: hidden;
+}

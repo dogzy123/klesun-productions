@@ -15,10 +15,13 @@ function Body() {
                     <div className={styles.secondarySectionMain}>
                         <div className={styles.secondarySectionMainContainer}>
                             <div className={styles.secondarySectionMainHeader}>
-                                <h3 className={styles.secondarySectionMainTitle}>Some cool title will be here in future.</h3>
+                                <h3 className={styles.secondarySectionMainTitle}>Programming odd jobs.</h3>
                             </div>
                             <div className={styles.secondarySectionMainDescription}>
-                                <p className={styles.secondarySectionMainText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                                <p className={styles.secondarySectionMainText}>
+                                    A "write a program for me" service. Taking orders of any scale on any technology.
+                                    The job price is case-to-case matter of discussion, but in general it's around $20 per estimated working hour.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -42,6 +45,23 @@ function Body() {
                                     <h2 className={styles.secondaryColumnContainerTitle}>Title number two</h2>
                                     <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took.</p>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section className={styles.lastSection}>
+                <div className={styles.container}>
+                    <div className={styles.secondarySectionMain}>
+                        <div className={styles.lastSectionMainContainer}>
+                            <div className={styles.secondarySectionMainHeader}>
+                                <h3 className={styles.secondarySectionMainTitle}>Programming odd jobs.</h3>
+                            </div>
+                            <div className={styles.secondarySectionMainDescription}>
+                                <p className={styles.secondarySectionMainText}>
+                                    A "write a program for me" service. Taking orders of any scale on any technology.
+                                    The job price is case-to-case matter of discussion, but in general it's around $20 per estimated working hour.
+                                </p>
                             </div>
                         </div>
                     </div>

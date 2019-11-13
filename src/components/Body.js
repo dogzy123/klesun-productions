@@ -1,6 +1,28 @@
 import React from "react";
 import styles from "../styles/main.module.scss";
 
+const popularProjects = [
+    {
+        title: 'deep-assoc-completion',
+        prodUrl: 'https://plugins.jetbrains.com/plugin/9927-deep-assoc-completion/',
+        devUrl: 'https://github.com/klesun/deep-assoc-completion'
+    },
+    {
+        title: 'denisbook.com',
+        prodUrl: 'https://denisbook.com/',
+        devUrl: 'https://github.com/dogzy123/denisbook'
+    },
+    {
+        title: 'midiana.lv',
+        prodUrl: 'http://midiana.lv/entry/main/',
+        devUrl: 'https://github.com/klesun/midiana.lv'
+    },
+    {
+        title: 'github profile',
+        prodUrl: 'https://github.com/klesun',
+    }
+];
+
 function Body() {
     return (
         <main className={styles.mainSection}>
@@ -9,35 +31,61 @@ function Body() {
                     <div className={styles.introSectionMain}>
                         <div className={styles.introSectionMainContainer}>
                             <div className={styles.introSectionMainHeader}>
-                                <h3 className={styles.introSectionTitle}>Programming odd jobs.</h3>
+                                <h3 className={styles.introSectionTitle}>A "write a program for me" service.</h3>
+                            </div>
+                            <div className={styles.introSectionSecondaryHeader}>
+                                <h4 className={styles.introSectionTitle}>
+                                    Ever had a genius money-maker idea, but had no programming knowledge to implement it? You've come to right place.
+                                </h4>
                             </div>
                             <div className={styles.introSectionMainDescription}>
                                 <p className={styles.sectionMainText}>
-                                    A "write a program for me" service. Taking orders of any scale on any technology.
-                                    The job price is case-to-case matter of discussion, but in general it's around $20 per estimated working hour.
+                                    Taking orders of any scale on any technology. The job price is case-to-case matter of discussion, but in general it's around $20 per estimated working hour
                                 </p>
                             </div>
                         </div>
                     </div>
-                    <div className={styles.introPointsDivider}>
-                        <div className={styles.introPointsDividerPoint} />
-                        <div className={styles.introPointsDividerPoint} />
-                        <div className={styles.introPointsDividerPoint} />
-                    </div>
                     <div className={styles.introSectionColumns}>
-                        <div className={styles.introSectionInnerColumn}>
-                            <div className={styles.introColumnContainer}>
+                        <div className={styles.introSectionBusinessDescription}>
+                            <div className={styles.introSectionColumnContainer}>
                                 <div className={styles.introColumnContainerHeader}>
-                                    <h2 className={styles.introColumnContainerTitle}>What exactly we do?</h2>
-                                    <p>Ever had a genius money-maker idea, but had no programming knowledge to implement it? You've come to right place</p>
+                                    <p>
+                                        We are writing web apps, desktop apps, android apps, scripts, games, graphic processing, sound processing, plugins for other apps (including browsers), algorithms, optimization, consultation and much more else.
+                                    </p>
+                                    <p>
+                                        We aim for the max mutual understanding and fast changes, so we organize work in such way, that you'll quickly get access to the scratch of the future app to look at it's appearance, click some buttons and give you the base for the feedback already in the early development stages.
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                        <div className={styles.introSectionInnerColumn}>
-                            <div className={styles.introColumnContainer}>
+                        <div className={styles.introSectionPopularProjects}>
+                            <div className={styles.introSectionColumnContainer}>
                                 <div className={styles.introColumnContainerHeader}>
-                                    <h2 className={styles.introColumnContainerTitle}>Title number two</h2>
-                                    <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took.</p>
+                                    <div className={styles.popularProjects}>
+                                        <div className={styles.popularProjectsContainer}>
+                                            <h2 className={styles.introColumnContainerTitle}>Our popular projects</h2>
+                                            <ul>
+                                                {
+                                                    popularProjects.map( (project, i) => {
+                                                        return (
+                                                            <li key={i}>
+                                                                <a href={project.prodUrl} rel="noopener noreferrer" target='_blank'>{project.title}</a>
+                                                                {
+                                                                    project.devUrl
+                                                                        ? (
+                                                                            <span>({
+                                                                                <a href={project.devUrl} rel="noopener noreferrer" target='_blank'>src</a>
+                                                                            })</span>
+                                                                        )
+                                                                        : null
+                                                                }
+                                                            </li>
+                                                        );
+                                                    } )
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

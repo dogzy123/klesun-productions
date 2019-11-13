@@ -31,8 +31,8 @@
   position: fixed;
   top: 0;
   min-width: auto;
-  height: 55px;
-  border-top: 5px solid #9e3d61;
+  height: 72px;
+  border-top: 5px solid #8a3f5b;
   background: #f9f9f9;
   border-bottom: 1px solid #d4d4d4;
   z-index: 10;
@@ -79,6 +79,7 @@
   .logoContainer {
     height: 100%;
     display: flex;
+    border-bottom: 2px solid #731b3c;
 
     .logoLink {
       display: flex;
@@ -105,8 +106,8 @@
     .logoImage {
       background: url("../images/klesun-prod-logo.png");
       display: inline-block;
-      height: 36px;
-      width: 36px;
+      height: 64px;
+      width: 64px;
       background-size: cover;
     }
   }
@@ -139,14 +140,9 @@
 
 .mainSection {
   width: 100%;
-
-  .sectionMainText {
-    text-align: center;
-  }
-
-  .lastSectionParagraph {
-    text-align: left;
-  }
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 
   .introSectionTitle {
     font-weight: 700;
@@ -156,31 +152,52 @@
     font-size: 32px;
   }
 
+  .sectionMainText {
+    text-align: center;
+  }
+
+  .lastSectionParagraph {
+    text-align: left;
+  }
+
+  .introSectionMainHeader {
+    margin: 12px 0;
+  }
+
+  .introSectionSecondaryHeader {
+    margin: 12px 0;
+
+    .introSectionTitle {
+      font-weight: 500;
+      font-size: 24px;
+    }
+  }
+
   .lastSectionMainTitle {
-    font-size: 32px;
+    font-size: 18px;
     text-align: left;
     font-style: italic;
   }
 
   .introSection {
-    .introSectionMainHeader {}
+    .introSectionMainContainer {
+      @include xs {
+        padding: 32px;
+      }
 
-    .introSectionMainDescription {}
+      @include sm {
+        padding: 64px;
+      }
+    }
+
+    .introSectionMainDescription {
+      margin-top: 32px;
+    }
 
     .introSectionMain {
       display: flex;
       flex-direction: column;
       justify-content: center;
-
-      .introSectionMainContainer {
-        @include xs {
-          padding: 32px;
-        }
-
-        @include sm {
-          padding: 64px;
-        }
-      }
     }
 
     .introPointsDivider {
@@ -220,6 +237,63 @@
         flex-direction: row;
       }
 
+      .introSectionColumnContainer {
+        padding: 32px 16px;
+      }
+
+      .popularProjects {
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: row;
+
+        .popularProjectsContainer {
+          flex-basis: 70%;
+        }
+      }
+
+      .introSectionBusinessDescription {
+        flex-basis: 65%;
+
+        p {
+          text-indent: 12px;
+          font-size: 16px;
+          line-height: 24px;
+        }
+
+        .introSectionColumnContainer {
+          padding: 32px 64px;
+        }
+      }
+
+      .introSectionPopularProjects {
+        flex-basis: 35%;
+
+        .introColumnContainerTitle {
+          margin-bottom: 0;
+          font-size: 16px;
+          text-align: left;
+          padding: 8px 0;
+          border-bottom: 2px solid #332030;
+        }
+
+        ul {
+          padding: 0;
+          list-style: none;
+
+          li {
+            padding: 4px 0;
+
+            > a {
+              margin-right: 4px;
+              text-decoration: none;
+              color: #731b3c;
+              font-weight: 500;
+              font-size: 16px;
+            }
+          }
+        }
+      }
+
       .introSectionInnerColumn {
         display: flex;
         flex: 1;
@@ -252,19 +326,18 @@
   }
 
   .lastSection {
-    background-color: #521e31;
+    background-color: #332030;
+    flex-grow: 1;
 
-    .secondarySectionMainDescription {
-
-    }
+    .secondarySectionMainDescription {}
 
     .lastSectionMain {
       @include xs {
-        padding: 32px;
+        padding: 24px 32px;
       }
 
       @include sm {
-        padding: 48px 64px;
+        padding: 24px 64px;
       }
     }
 

@@ -14,8 +14,12 @@ const popularProjects = [
     },
     {
         title: 'midiana.lv',
-        prodUrl: 'http://midiana.lv/entry/main/',
+        prodUrl: 'http://midiana.lv/entry/compose/',
         devUrl: 'https://github.com/klesun/midiana.lv'
+    },
+    {
+        title: 'riddle-needle',
+        prodUrl: 'https://github.com/klesun/riddle-needle',
     },
     {
         title: 'github',
@@ -50,10 +54,10 @@ function Body() {
                             <div className={styles.introSectionColumnContainer}>
                                 <div className={styles.introColumnContainerHeader}>
                                     <p>
-                                        The job price is case-to-case matter of discussion, but in general it's around $20 per estimated working hour.
+                                        We are writing web apps, desktop apps, android apps, scripts, games, graphic processing, sound processing, plugins, algorithms, optimization, consultation and much more else.
                                     </p>
                                     <p>
-                                        We are writing web apps, desktop apps, android apps, scripts, games, graphic processing, sound processing, plugins, algorithms, optimization, consultation and much more else.
+                                        The job price is case-to-case matter of discussion, but in general it's around $20 per estimated working hour.
                                     </p>
                                     <p>
                                         Our main selling point is that we aim for the mutual understanding and fast changes, so we organize work in such way, that you'll quickly get access to the scratch of the future app to look at it's appearance, click some buttons and give you the base for the feedback already in the early development stages.

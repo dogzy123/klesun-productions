@@ -182,7 +182,12 @@
   }
 
   .introSection {
+    flex-grow: 1;
+    flex-shrink: 1;
+
     .introSectionMainContainer {
+      height: 100%;
+
       @include xs {
         padding: 32px;
       }

@@ -32,7 +32,7 @@
   top: 0;
   min-width: auto;
   height: 72px;
-  border-top: 5px solid #8a3f5b;
+  border-top: 5px solid #7a4772;
   background: #f9f9f9;
   border-bottom: 1px solid #d4d4d4;
   z-index: 10;
@@ -104,7 +104,7 @@
     }
 
     .logoImage {
-      background: url("../images/klesun-prod-logo.png");
+      background: url("../images/klesun-prod-logo.png") no-repeat;
       display: inline-block;
       height: 64px;
       width: 64px;
@@ -161,22 +161,24 @@
   }
 
   .introSectionMainHeader {
-    margin: 12px 0;
+    margin: 0;
   }
 
   .introSectionSecondaryHeader {
-    margin: 12px 0;
+    margin: 0;
+    text-align: center;
 
     .introSectionTitle {
-      font-weight: 500;
-      font-size: 24px;
+      font-weight: 400;
+      font-size: 14px;
+      color: #7b7b7b;
     }
   }
 
   .lastSectionMainTitle {
-    font-size: 18px;
-    text-align: left;
-    font-style: italic;
+    font-size: 12px;
+    text-align: right;
+    font-weight: 400;
   }
 
   .introSection {
@@ -191,7 +193,7 @@
     }
 
     .introSectionMainDescription {
-      margin-top: 32px;
+      margin-top: 42px;
     }
 
     .introSectionMain {
@@ -255,8 +257,7 @@
         flex-basis: 65%;
 
         p {
-          text-indent: 12px;
-          font-size: 16px;
+          font-size: 14px;
           line-height: 24px;
         }
 
@@ -269,10 +270,10 @@
         flex-basis: 35%;
 
         .introColumnContainerTitle {
-          margin-bottom: 0;
+          margin: 0;
           font-size: 16px;
           text-align: left;
-          padding: 8px 0;
+          padding: 16px 0;
           border-bottom: 2px solid #332030;
         }
 
@@ -329,9 +330,18 @@
     background-color: #332030;
     flex-grow: 1;
 
+    .container {
+      height: 100%;
+      display: flex;
+    }
+
     .secondarySectionMainDescription {}
 
     .lastSectionMain {
+      flex-grow: 1;
+      align-items: flex-end;
+      display: flex;
+
       @include xs {
         padding: 24px 32px;
       }
@@ -344,6 +354,7 @@
     .lastSectionMainContainer {
       display: flex;
       flex-direction: column;
+      flex-grow: 1;
       color: white;
     }
   }

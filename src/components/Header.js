@@ -57,7 +57,7 @@ function Header() {
                             onClick={handleClick}
                             className={styles.contactUsBtn}
                         >
-                            Contact Us
+                            Order Software
                         </button>
                     </div>
                 </div>

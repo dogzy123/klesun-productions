@@ -18,8 +18,8 @@ const popularProjects = [
         devUrl: 'https://github.com/klesun/midiana.lv'
     },
     {
-        title: 'github profile',
-        prodUrl: 'https://github.com/klesun',
+        title: 'github',
+        prodUrl: 'https://github.com/klesun?tab=repositories',
     }
 ];
 
@@ -31,16 +31,16 @@ function Body() {
                     <div className={styles.introSectionMain}>
                         <div className={styles.introSectionMainContainer}>
                             <div className={styles.introSectionMainHeader}>
-                                <h3 className={styles.introSectionTitle}>A "write a program for me" service.</h3>
+                                <h3 className={styles.introSectionTitle}>Programming odd jobs.</h3>
                             </div>
                             <div className={styles.introSectionSecondaryHeader}>
-                                <h4 className={styles.introSectionTitle}>
-                                    Ever had a genius money-maker idea, but had no programming knowledge to implement it? You've come to right place.
-                                </h4>
+                                <span className={styles.introSectionTitle}>
+                                    A "write a program for me" service. Taking orders of any scale on any technology
+                                </span>
                             </div>
                             <div className={styles.introSectionMainDescription}>
                                 <p className={styles.sectionMainText}>
-                                    Taking orders of any scale on any technology. The job price is case-to-case matter of discussion, but in general it's around $20 per estimated working hour
+                                    Ever had a genius money-maker idea, but had no programming knowledge to implement it? You've come to right place.
                                 </p>
                             </div>
                         </div>
@@ -50,10 +50,13 @@ function Body() {
                             <div className={styles.introSectionColumnContainer}>
                                 <div className={styles.introColumnContainerHeader}>
                                     <p>
-                                        We are writing web apps, desktop apps, android apps, scripts, games, graphic processing, sound processing, plugins for other apps (including browsers), algorithms, optimization, consultation and much more else.
+                                        The job price is case-to-case matter of discussion, but in general it's around $20 per estimated working hour.
                                     </p>
                                     <p>
-                                        We aim for the max mutual understanding and fast changes, so we organize work in such way, that you'll quickly get access to the scratch of the future app to look at it's appearance, click some buttons and give you the base for the feedback already in the early development stages.
+                                        We are writing web apps, desktop apps, android apps, scripts, games, graphic processing, sound processing, plugins, algorithms, optimization, consultation and much more else.
+                                    </p>
+                                    <p>
+                                        Our main selling point is that we aim for the mutual understanding and fast changes, so we organize work in such way, that you'll quickly get access to the scratch of the future app to look at it's appearance, click some buttons and give you the base for the feedback already in the early development stages.
                                     </p>
                                 </div>
                             </div>
@@ -96,13 +99,13 @@ function Body() {
                 <div className={styles.container}>
                     <div className={styles.lastSectionMain}>
                         <div className={styles.lastSectionMainContainer}>
-                            <div className={styles.introColumnContainerHeader}>
-                                <h3 className={styles.lastSectionMainTitle}>Dirty deeds done dirty cheep.</h3>
-                            </div>
                             <div className={styles.secondarySectionMainDescription}>
                                 <p className={styles.lastSectionParagraph}>
                                     To make an order, you can contact us on safronevev@gmail.com (email address subject to change)
                                 </p>
+                            </div>
+                            <div className={styles.introColumnContainerHeader}>
+                                <h3 className={styles.lastSectionMainTitle}>Dirty deeds done dirty cheep.</h3>
                             </div>
                         </div>
                     </div>

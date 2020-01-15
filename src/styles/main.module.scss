@@ -1,28 +1,5 @@
 @import "mixins";
-
-.modalContactBackdrop {
-  position: absolute;
-  top: 0;
-  z-index: 20;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  background: black;
-  opacity: 0.65;
-  cursor: default;
-}
-
-.modalBody {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 40%;
-  max-width: 600px;
-  height: 575px;
-  background: white;
-  z-index: 300;
-}
+@import "utils";
 
 .header {
   width: 100%;
@@ -52,27 +29,6 @@
   .contactUsContainer {
     display: flex;
     align-items: center;
-
-    .contactUsBtn {
-      padding: 8px 24px;
-      background: transparent;
-      border: 2px solid #731b3c;
-      color: #731b3c;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: color 0.076s ease-in, border-color 0.076s ease-in;
-      outline: none;
-
-      &:active {
-        background-color: white;
-      }
-
-      &:hover {
-        border-color: #c53e71;
-        color: #c53e71;
-      }
-    }
   }
 
   .logoContainer {
@@ -288,6 +244,8 @@
 
           li {
             padding: 2px 0;
+            display: flex;
+            justify-content: space-between;
 
             > a {
               margin-right: 4px;

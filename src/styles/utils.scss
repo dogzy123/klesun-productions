@@ -1,0 +1,87 @@
+
+.klesunBtn {
+  padding: 8px 24px;
+  background: transparent;
+  border: 2px solid #731b3c;
+  color: #731b3c;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.076s ease-in, border-color 0.076s ease-in;
+  outline: none;
+  user-select: none;
+
+  &:active {
+    background-color: white;
+  }
+
+  &:hover {
+    border-color: #c53e71;
+    color: #c53e71;
+  }
+}
+
+.klesunInput {
+  border: none;
+  box-shadow: none;
+  height: 28px;
+  border-radius: 0;
+  padding: 4px 0;
+  font-size: 16px;
+  color: #731b3c;
+  border-bottom: 1px solid rgba(115, 27, 60, 0.4);
+  transition: border-bottom-color 0.1s linear;
+
+  &.klesunInputActive {
+    border-bottom-color: #731b3c;
+  }
+
+  &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: rgba(115, 27, 60, 0.4);
+  }
+  &::-moz-placeholder { /* Firefox 19+ */
+    color: rgba(115, 27, 60, 0.4);
+  }
+  &:-ms-input-placeholder { /* IE 10+ */
+    color: rgba(115, 27, 60, 0.4);
+  }
+  &:-moz-placeholder { /* Firefox 18- */
+    color: rgba(115, 27, 60, 0.4);
+  }
+
+  &:hover {
+    border-bottom-color: #731b3c;
+
+    &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      color: #731b3c;
+    }
+    &::-moz-placeholder { /* Firefox 19+ */
+      color: #731b3c;
+    }
+    &:-ms-input-placeholder { /* IE 10+ */
+      color: #731b3c;
+    }
+    &:-moz-placeholder { /* Firefox 18- */
+      color: #731b3c;
+    }
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+    border-bottom-color: #731b3c;
+
+    &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      color: transparent;
+    }
+    &::-moz-placeholder { /* Firefox 19+ */
+      color: transparent;
+    }
+    &:-ms-input-placeholder { /* IE 10+ */
+      color: transparent;
+    }
+    &:-moz-placeholder { /* Firefox 18- */
+      color: transparent;
+    }
+  }
+}

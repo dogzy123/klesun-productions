@@ -1,10 +1,10 @@
 import React from "react";
 import classNames from "classnames";
+import Modal from "./Modal";
 import styles from "../styles/main.module.scss";
 
 function Header() {
     const [modalOpen, setModalOpen] = React.useState(false);
-    const modalRef = React.useRef(null);
 
     function handleClick (e) {
         setModalOpen( prevState => !prevState );
@@ -13,33 +13,6 @@ function Header() {
     function close () {
         setModalOpen(false);
     }
-
-    React.useEffect( () => {
-        const closeOnEscape = e => {
-            if (e && e.keyCode === 27)
-            {
-                close();
-            }
-        };
-
-        const closeOnClick = e => {
-            if (modalRef.current && !modalRef.current.contains(e.target))
-            {
-                close();
-            }
-        };
-
-        if (modalOpen)
-        {
-            document.body.addEventListener('keydown', closeOnEscape);
-            document.body.addEventListener('click', closeOnClick);
-        }
-
-        return () => {
-            document.body.removeEventListener('keydown', closeOnEscape);
-            document.body.removeEventListener('click', closeOnClick);
-        };
-    }, [modalOpen] );
 
     return (
         <React.Fragment>
@@ -55,27 +28,17 @@ function Header() {
                     <div className={styles.contactUsContainer}>
                         <button
                             onClick={handleClick}
-                            className={styles.contactUsBtn}
+                            className={styles.klesunBtn}
                         >
                             Order Software
                         </button>
                     </div>
                 </div>
             </header>
-            {
-                modalOpen
-                    ? (
-                        <React.Fragment>
-                            <div className={styles.modalContactBackdrop} />
-                            <div className={styles.modalBody} ref={modalRef}>
-                                <div className={styles.modalBodyContainer}>
-
-                                </div>
-                            </div>
-                        </React.Fragment>
-                    )
-                    : null
-            }
+            <Modal
+                open={modalOpen}
+                onClose={close}
+            />
         </React.Fragment>
     );
 }

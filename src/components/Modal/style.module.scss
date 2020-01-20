@@ -74,13 +74,35 @@
     .bodyRowContainer {
       display: flex;
       flex-grow: 1;
-      padding: 8px 24px;
+      padding: 16px 24px;
 
       .bodyCol {
         display: flex;
         justify-content: center;
-        flex-basis: 50%;
+        flex: 1;
       }
     }
+  }
+}
+
+.descriptionWrapper {
+
+}
+
+.description {
+  width: 100%;
+  padding-bottom: 4px;
+  line-height: 22px;
+  color: #731b3c;
+  border-bottom: 1px solid #731b3c;
+  cursor: text;
+  max-height: 160px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  word-wrap: break-word;
+  resize: none;
+
+  &:focus {
+    outline: none;
   }
 }

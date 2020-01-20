@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useRef} from "react";
 import classNames from "classnames";
 import styles from "./style.module.scss";
+import Select from "../Select";
 
 const jobKind = [
     {title: 'Create new app', value: 'create'},
@@ -8,13 +9,54 @@ const jobKind = [
     {title: 'Consultation', value: 'consultation'},
 ];
 
+const softwareKind = [
+    {title: 'Web app', value: 'web'},
+    {title: 'Desktop app', value: 'desktop'},
+    {title: 'Android app', value: 'android'},
+    {title: 'Plugin', value: 'plugin'},
+    {title: 'Other', value: 'other'},
+];
+
 function Modal (props) {
     const { open, onClose } = props;
     const modalRef = useRef(null);
+    const columnRef = useRef(null);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [jobValue, setJobValue] = useState('create');
-    const [jobSelect, setJobSelect] = useState(false);
+    const [softwareValue, setSoftwareValue] = useState('web');
+    const [descriptionValue, setDescriptionValue] = useState('');
+    const [descriptionWidth, setDescriptionWidth] = useState(null);
+
+    const sendForm = () => {
+        const form = {
+            name,
+            email,
+            jobType: jobValue,
+            softwareType: softwareValue,
+            description: descriptionValue,
+        };
+
+        return fetch('https://klesun-productions.com/api/orderSoftware', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(form)
+        })
+    };
+
+    const handleDescription = e => {
+        setDescriptionValue(e.target.innerText);
+    };
+
+    const handleJobChange = value => {
+        setJobValue(value);
+    };
+
+    const handleSoftwareChange = value => {
+        setSoftwareValue(value);
+    };
 
     useEffect( () => {
         const closeOnEscape = e => {
@@ -31,19 +73,28 @@ function Modal (props) {
             }
         };
 
+        const handleDescriptionWidth = () => {
+            setDescriptionWidth(columnRef.current.offsetWidth - 24 * 2);
+        };
+
+        if (columnRef.current)
+        {
+            handleDescriptionWidth();
+            window.addEventListener('resize', handleDescriptionWidth);
+        }
+
         if (open)
         {
             document.body.addEventListener('keydown', closeOnEscape);
-            document.body.addEventListener('click', closeOnClick);
+            document.body.addEventListener('mouseup', closeOnClick);
         }
 
         return () => {
             document.body.removeEventListener('keydown', closeOnEscape);
-            document.body.removeEventListener('click', closeOnClick);
+            document.body.removeEventListener('mouseup', closeOnClick);
+            window.removeEventListener('resize', handleDescriptionWidth);
         };
     }, [open] );
-
-    const getJobName = () => jobKind.filter(el => el.value === jobValue)[0].title;
 
     return (
         open
@@ -81,40 +132,42 @@ function Modal (props) {
                                 <div className={styles.bodyRow}>
                                     <div className={styles.bodyRowContainer}>
                                         <div className={styles.bodyCol}>
-                                            <select
+                                            <Select
                                                 value={jobValue}
-                                                onChange={ (e) => setJobValue(e.target.value) }
-                                                style={{display: 'none'}}
-                                            >
-                                                {
-                                                    jobKind.map( (el, i) => (
-                                                        <option key={i} value={el.value}>{el.title}</option>
-                                                    ) )
-                                                }
-                                            </select>
-                                            <div onClick={ () => setJobSelect(prev => !prev)}>{getJobName()}</div>
-                                            {
-                                                jobSelect
-                                                    ? (
-                                                        <div>
-                                                            {
-                                                                jobKind.map( (el, i) => (
-                                                                    <div key={i} onClick={ () => {
-                                                                        setJobValue(el.value);
-                                                                        setJobSelect(false);
-                                                                    } }>{el.title}</div>
-                                                                ))
-                                                            }
-                                                        </div>
-                                                    )
-                                                    : null
-                                            }
+                                                onChange={handleJobChange}
+                                                options={jobKind}
+                                            />
+                                        </div>
+                                        <div className={styles.bodyCol}>
+                                            <Select
+                                                value={softwareValue}
+                                                onChange={handleSoftwareChange}
+                                                options={softwareKind}
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={styles.bodyRow}>
+                                    <div className={styles.bodyRowContainer}>
+                                        <div className={styles.bodyCol} ref={columnRef}>
+                                            <div className={styles.descriptionWrapper} style={{width: `${descriptionWidth}px`}}>
+                                                <div
+                                                    onInput={handleDescription}
+                                                    className={styles.description}
+                                                    contentEditable={true}
+                                                />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div className={styles.modalContainerFooter}>
-                                <button className={styles.klesunBtn}>Submit</button>
+                                <button
+                                    onClick={sendForm}
+                                    className={styles.klesunBtn}
+                                >
+                                    Submit
+                                </button>
                             </div>
                         </div>
                     </div>

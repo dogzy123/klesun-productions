@@ -64,6 +64,7 @@
       height: 64px;
       width: 64px;
       background-size: cover;
+      image-rendering: pixelated;
     }
   }
 }
@@ -113,6 +114,14 @@
 
   .lastSectionParagraph {
     text-align: left;
+
+    @include xs {
+      font-size: 12px;
+    }
+
+    @include md {
+      font-size: 16px;
+    }
   }
 
   .introSectionMainHeader {
@@ -127,6 +136,14 @@
       font-weight: 400;
       font-size: 14px;
       color: #7b7b7b;
+
+      @include xs {
+        margin: 24px 0;
+      }
+
+      @include md {
+        margin: 0;
+      }
     }
   }
 
@@ -209,7 +226,17 @@
         flex-direction: row;
 
         .popularProjectsContainer {
-          flex-basis: 70%;
+          @include xs {
+            flex-basis: 100%;
+          }
+
+          @include sm {
+            flex-basis: 80%;
+          }
+
+          @include md {
+            flex-basis: 70%;
+          }
         }
       }
 
@@ -222,7 +249,13 @@
         }
 
         .introSectionColumnContainer {
-          padding: 32px 64px;
+          @include xs {
+            padding: 32px 16px;
+          }
+
+          @include md {
+            padding: 32px 64px;
+          }
         }
       }
 

@@ -2,6 +2,7 @@ import React, {useState, useEffect, useRef} from "react";
 import classNames from "classnames";
 import styles from "./style.module.scss";
 import Select from "../Select";
+import { ReactComponent as CheckIcon } from "../../images/check_icon.svg";
 
 const jobKind = [
     {title: 'Create new app', value: 'create'},
@@ -27,6 +28,10 @@ function Modal (props) {
     const [softwareValue, setSoftwareValue] = useState('web');
     const [descriptionValue, setDescriptionValue] = useState('');
     const [descriptionWidth, setDescriptionWidth] = useState(null);
+    const [offPrice, setOffPrice] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
+    const [animationPassed, setAnimationPassed] = useState(false);
+    const [processing, setProcessing] = useState(false);
 
     const sendForm = () => {
         const form = {
@@ -35,7 +40,10 @@ function Modal (props) {
             jobType: jobValue,
             softwareType: softwareValue,
             description: descriptionValue,
+            publishSources: offPrice,
         };
+
+        setProcessing(true);
 
         return fetch('https://klesun-productions.com/api/orderSoftware', {
             method: 'POST',
@@ -44,6 +52,10 @@ function Modal (props) {
             },
             body: JSON.stringify(form)
         })
+            .then( () => {
+                setSubmitted(true);
+                setProcessing(false);
+            } )
     };
 
     const handleDescription = e => {
@@ -58,6 +70,10 @@ function Modal (props) {
         setSoftwareValue(value);
     };
 
+    const handleOffPrice = e => {
+        setOffPrice(e.target.checked);
+    };
+
     useEffect( () => {
         const closeOnEscape = e => {
             if (e && e.keyCode === 27)
@@ -70,6 +86,9 @@ function Modal (props) {
             if (modalRef.current && !modalRef.current.contains(e.target))
             {
                 onClose();
+                setSubmitted(false);
+                setAnimationPassed(false);
+                setProcessing(false);
             }
         };
 
@@ -96,6 +115,15 @@ function Modal (props) {
         };
     }, [open] );
 
+    useEffect( () => {
+        if (submitted)
+        {
+            setTimeout( () => {
+                setAnimationPassed(true);
+            }, 450);
+        }
+    }, [submitted] );
+
     return (
         open
             ? (
@@ -109,65 +137,103 @@ function Modal (props) {
                                 </div>
                             </div>
                             <div className={styles.modalContainerBody}>
-                                <div className={styles.bodyRow}>
-                                    <div className={styles.bodyRowContainer}>
-                                        <div className={styles.bodyCol}>
-                                            <input
-                                                className={classNames(styles.klesunInput, name.length ? styles.klesunInputActive : null)}
-                                                value={name}
-                                                placeholder='Name'
-                                                onChange={e => setName(e.target.value)}
-                                            />
-                                        </div>
-                                        <div className={styles.bodyCol}>
-                                            <input
-                                                className={classNames(styles.klesunInput, email.length ? styles.klesunInputActive : null)}
-                                                value={email}
-                                                placeholder='Email'
-                                                onChange={e => setEmail(e.target.value)}
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className={styles.bodyRow}>
-                                    <div className={styles.bodyRowContainer}>
-                                        <div className={styles.bodyCol}>
-                                            <Select
-                                                value={jobValue}
-                                                onChange={handleJobChange}
-                                                options={jobKind}
-                                            />
-                                        </div>
-                                        <div className={styles.bodyCol}>
-                                            <Select
-                                                value={softwareValue}
-                                                onChange={handleSoftwareChange}
-                                                options={softwareKind}
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className={styles.bodyRow}>
-                                    <div className={styles.bodyRowContainer}>
-                                        <div className={styles.bodyCol} ref={columnRef}>
-                                            <div className={styles.descriptionWrapper} style={{width: `${descriptionWidth}px`}}>
-                                                <div
-                                                    onInput={handleDescription}
-                                                    className={styles.description}
-                                                    contentEditable={true}
-                                                />
+                                {
+                                    submitted && animationPassed
+                                        ? (
+                                            <div className={styles.submittedBlock}>
+                                                <CheckIcon />
+                                                <span>We will contact you shortly!</span>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                        )
+                                        : (
+                                            <React.Fragment>
+                                                {
+                                                    processing
+                                                        ? (
+                                                            <div className={styles.postProcessing}>
+                                                                <h1>Sending...</h1>
+                                                            </div>
+                                                        )
+                                                        : null
+                                                }
+                                                <div className={classNames(styles.bodyRow, submitted ? styles.modalFadeOut : null)}>
+                                                    <div className={styles.bodyRowContainer}>
+                                                        <div className={styles.bodyCol}>
+                                                            <input
+                                                                className={classNames(styles.klesunInput, name.length ? styles.klesunInputActive : null)}
+                                                                value={name}
+                                                                placeholder='Name'
+                                                                onChange={e => setName(e.target.value)}
+                                                            />
+                                                        </div>
+                                                        <div className={styles.bodyCol}>
+                                                            <input
+                                                                className={classNames(styles.klesunInput, email.length ? styles.klesunInputActive : null)}
+                                                                value={email}
+                                                                placeholder='Email'
+                                                                onChange={e => setEmail(e.target.value)}
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className={classNames(styles.bodyRow, submitted ? styles.modalFadeOut : null)}>
+                                                    <div className={styles.bodyRowContainer}>
+                                                        <div className={styles.bodyCol}>
+                                                            <Select
+                                                                value={jobValue}
+                                                                onChange={handleJobChange}
+                                                                options={jobKind}
+                                                            />
+                                                        </div>
+                                                        <div className={styles.bodyCol}>
+                                                            <Select
+                                                                value={softwareValue}
+                                                                onChange={handleSoftwareChange}
+                                                                options={softwareKind}
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className={classNames(styles.bodyRow, submitted ? styles.modalFadeOut : null)}>
+                                                    <div className={styles.bodyRowContainer}>
+                                                        <div className={styles.bodyCol} ref={columnRef}>
+                                                            <div className={styles.descriptionWrapper} style={{width: `${descriptionWidth}px`}}>
+                                                                <div
+                                                                    onInput={handleDescription}
+                                                                    className={styles.description}
+                                                                    contentEditable={true}
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className={classNames(styles.bodyRow, submitted ? styles.modalFadeOut : null)}>
+                                                    <div className={styles.bodyRowContainer}>
+                                                        <div className={styles.bodyCol} style={{justifyContent: 'flex-start'}}>
+                                                            <label className={styles.offPriceCheckbox}>
+                                                                <input type='checkbox' checked={offPrice} onChange={handleOffPrice}/>
+                                                                <span>Publish sources (Tick to get 20% off price)</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </React.Fragment>
+                                        )
+                                }
                             </div>
                             <div className={styles.modalContainerFooter}>
-                                <button
-                                    onClick={sendForm}
-                                    className={styles.klesunBtn}
-                                >
-                                    Submit
-                                </button>
+                                {
+                                    !submitted
+                                        ? (
+                                            <button
+                                                onClick={sendForm}
+                                                className={styles.klesunBtn}
+                                            >
+                                                Submit
+                                            </button>
+                                        )
+                                        : null
+                                }
                             </div>
                         </div>
                     </div>

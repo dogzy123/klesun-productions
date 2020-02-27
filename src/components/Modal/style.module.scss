@@ -1,4 +1,5 @@
 @import "../../styles/utils";
+@import "../../styles/mixins";
 
 .modalContactBackdrop {
   position: absolute;
@@ -10,6 +11,18 @@
   background: black;
   opacity: 0.65;
   cursor: default;
+  animation: fadeId;
+  animation-duration: 200ms;
+}
+
+@keyframes fadeId {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0.65;
+  }
 }
 
 .modalBody {
@@ -17,11 +30,38 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 40%;
   max-width: 600px;
-  height: 575px;
   background: white;
   z-index: 300;
+  animation: flyIn;
+  animation-duration: 200ms;
+  animation-timing-function: ease-in;
+
+  @include xs {
+    width: 95%;
+    height: 80%;
+  }
+
+  @include md {
+    width: 40%;
+    height: 575px;
+  }
+}
+
+@keyframes flyIn {
+  0% {
+    transform: translate(-50%, -200%);
+    opacity: 0.01;
+  }
+
+  45%, 55% {
+    opacity: 0.2;
+  }
+
+  100% {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
 }
 
 .modalBodyContainer {
@@ -61,6 +101,37 @@
   flex-direction: row;
 }
 
+.submittedBlock {
+  display: flex;
+  justify-content: center;
+  margin-top: 64px;
+
+  & > svg {
+    margin-right: 12px;
+  }
+
+  & > span {
+    font-size: 24px;
+    color: #731b3c;
+  }
+}
+
+.postProcessing {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.75);
+  z-index: 30;
+
+  & > h1 {
+    margin: 50% auto;
+    text-align: center;
+    color: #e4e4e4fa;
+  }
+}
+
 .modalContainerBody {
   flex-grow: 1;
   display: flex;
@@ -87,6 +158,35 @@
 
 .descriptionWrapper {
 
+}
+
+.offPriceCheckbox {
+  margin: 0 24px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  color: #731b3c;
+
+  & > span {
+    line-height: 20px;
+  }
+}
+
+.modalFadeOut {
+  animation: modalRowFadeOut;
+  animation-duration: 300ms;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes modalRowFadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
 }
 
 .description {

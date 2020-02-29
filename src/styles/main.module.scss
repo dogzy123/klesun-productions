@@ -8,9 +8,9 @@
   top: 0;
   min-width: auto;
   height: 72px;
-  border-top: 5px solid #7a4772;
-  background: #f9f9f9;
-  border-bottom: 1px solid #d4d4d4;
+  border-top: 5px solid var(--top-line-color);
+  background: var(--header-background-color);
+  border-bottom: 1px solid var(--header-border-color);
   z-index: 10;
 
   .headerContainer {
@@ -34,7 +34,7 @@
   .logoContainer {
     height: 100%;
     display: flex;
-    border-bottom: 2px solid #731b3c;
+    border-bottom: 2px solid var(--logo-line-color);
 
     .logoLink {
       display: flex;
@@ -42,7 +42,7 @@
       flex: 1 0;
       align-items: center;
       text-decoration: none;
-      color: #731b3c;
+      color: var(--primary-color);
       font-weight: 500;
     }
 
@@ -100,9 +100,15 @@
   display: flex;
   flex-direction: column;
 
+  .container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
   .introSectionTitle {
     font-weight: 700;
-    color: #3e1927;
+    color: var(--font-color);
     text-align: center;
     margin: 0;
     font-size: 32px;
@@ -113,6 +119,7 @@
   }
 
   .lastSectionParagraph {
+    color: var(--foter-text-color);
     text-align: left;
 
     @include xs {
@@ -135,7 +142,7 @@
     .introSectionTitle {
       font-weight: 400;
       font-size: 14px;
-      color: #7b7b7b;
+      color: var(--intro-section-secondary-text-color);
 
       @include xs {
         margin: 24px 0;
@@ -151,6 +158,7 @@
     font-size: 12px;
     text-align: right;
     font-weight: 400;
+    color: var(--foter-text-color);
   }
 
   .introSection {
@@ -177,6 +185,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      flex: 1;
     }
 
     .introPointsDivider {
@@ -194,19 +203,12 @@
       @include sm {
         margin: 18px auto;
       }
-
-      .introPointsDividerPoint {
-        width: 28px;
-        height: 28px;
-        border-radius: 18px;
-        border: 8px solid #822a4a;
-        opacity: 0.4;
-      }
     }
 
     .introSectionColumns {
       display: flex;
       justify-content: space-between;
+      flex: 1;
 
       @include xs {
         flex-direction: column;
@@ -226,6 +228,8 @@
         flex-direction: row;
 
         .popularProjectsContainer {
+          position: relative;
+
           @include xs {
             flex-basis: 100%;
           }
@@ -236,6 +240,23 @@
 
           @include md {
             flex-basis: 70%;
+          }
+        }
+      }
+
+      .githubLogo {
+        display: flex;
+        justify-content: flex-end;
+        position: absolute;
+        top: 28px;
+        right: 0;
+
+        & > a {
+          padding: 0 4px;
+          transition: fill 0.076s ease-in;
+
+          &:hover {
+            fill: var(--github-hover-color);
           }
         }
       }
@@ -267,7 +288,7 @@
           font-size: 16px;
           text-align: left;
           padding: 16px 0;
-          border-bottom: 2px solid #332030;
+          border-bottom: 2px solid var(--intro-section-primary-text-color);
           cursor: default;
         }
 
@@ -283,9 +304,14 @@
             > a {
               margin-right: 4px;
               text-decoration: none;
-              color: #681e5c;
+              color: var(--project-list-link-color);
               font-weight: 500;
               font-size: 14px;
+              transition: color 0.076s ease-in;
+
+              &:hover{
+                color: var(--project-list-link-hover-color)
+              }
             }
           }
         }
@@ -323,7 +349,7 @@
   }
 
   .lastSection {
-    background-color: #332030;
+    background-color: var(--footer-background-color);
     flex-grow: 1;
 
     .container {

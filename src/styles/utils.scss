@@ -2,8 +2,8 @@
 .klesunBtn {
   padding: 8px 24px;
   background: transparent;
-  border: 2px solid #731b3c;
-  color: #731b3c;
+  border: 2px solid var(--btn-primary-color);
+  color: var(--btn-primary-color);
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
@@ -16,8 +16,8 @@
   }
 
   &:hover {
-    border-color: #c53e71;
-    color: #c53e71;
+    border-color: var(--btn-primary-hover-color);
+    color: var(--btn-primary-hover-color);
   }
 }
 

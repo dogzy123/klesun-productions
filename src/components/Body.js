@@ -1,31 +1,7 @@
 import React from "react";
 import styles from "../styles/main.module.scss";
-
-const popularProjects = [
-    {
-        title: 'deep-assoc-completion',
-        prodUrl: 'https://plugins.jetbrains.com/plugin/9927-deep-assoc-completion/',
-        devUrl: 'https://github.com/klesun/deep-assoc-completion'
-    },
-    {
-        title: 'denisbook.com',
-        prodUrl: 'https://denisbook.com/',
-        devUrl: 'https://github.com/dogzy123/denisbook'
-    },
-    {
-        title: 'midiana.lv',
-        prodUrl: 'http://midiana.lv/entry/compose/',
-        devUrl: 'https://github.com/klesun/midiana.lv'
-    },
-    {
-        title: 'riddle-needle',
-        prodUrl: 'https://github.com/klesun/riddle-needle',
-    },
-    {
-        title: 'github',
-        prodUrl: 'https://github.com/klesun?tab=repositories',
-    }
-];
+import popularProjects from "../popularProjects";
+import {ReactComponent as GithubLogo} from "../images/github-logo-edited.svg";
 
 function Body() {
     return (
@@ -35,7 +11,7 @@ function Body() {
                     <div className={styles.introSectionMain}>
                         <div className={styles.introSectionMainContainer}>
                             <div className={styles.introSectionMainHeader}>
-                                <h3 className={styles.introSectionTitle}>Programming odd jobs.</h3>
+                                <h3 className={styles.introSectionTitle}>Programming odd jobs</h3>
                             </div>
                             <div className={styles.introSectionSecondaryHeader}>
                                 <span className={styles.introSectionTitle}>
@@ -76,21 +52,20 @@ function Body() {
                                                     popularProjects.map( (project, i) => {
                                                         return (
                                                             <li key={i}>
-                                                                <a href={project.prodUrl} rel="noopener noreferrer" target='_blank'>{project.title}</a>
-                                                                {
-                                                                    project.devUrl
-                                                                        ? (
-                                                                            <span>({
-                                                                                <a href={project.devUrl} rel="noopener noreferrer" target='_blank'>src</a>
-                                                                            })</span>
-                                                                        )
-                                                                        : null
-                                                                }
+                                                                <a href={project.product} rel="noopener noreferrer" target='_blank'>{project.title}</a>
+                                                                <span>({
+                                                                    <a href={project.src} rel="noopener noreferrer" target='_blank'>src</a>
+                                                                })</span>
                                                             </li>
                                                         );
                                                     } )
                                                 }
                                             </ul>
+                                            <div className={styles.githubLogo}>
+                                                <a href='https://github.com/klesun' target='_blank' rel='noopener noreferrer'>
+                                                    <GithubLogo width={24} height={28}/>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -109,7 +84,7 @@ function Body() {
                                 </p>
                             </div>
                             <div className={styles.introColumnContainerHeader}>
-                                <h3 className={styles.lastSectionMainTitle}>Dirty deeds done dirty cheep.</h3>
+                                <h3 className={styles.lastSectionMainTitle}>Dirty deeds done dirt cheep.</h3>
                             </div>
                         </div>
                     </div>

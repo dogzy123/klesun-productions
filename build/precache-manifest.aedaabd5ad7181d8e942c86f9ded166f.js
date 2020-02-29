@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "db44fb90dbd73a8dbc1b9c889e5dd975",
+    "revision": "f8c78e99219545d9071c95c1cc4af534",
     "url": "/klesun-productions/build/index.html"
   },
   {
-    "revision": "a81dcd25c07a00a0afd8",
-    "url": "/klesun-productions/build/static/css/main.b07b785c.chunk.css"
+    "revision": "9f7a135588679b3452a7",
+    "url": "/klesun-productions/build/static/css/main.91b882e0.chunk.css"
   },
   {
     "revision": "b971e4142a870a252855",
     "url": "/klesun-productions/build/static/js/2.da3373e3.chunk.js"
   },
   {
-    "revision": "a81dcd25c07a00a0afd8",
-    "url": "/klesun-productions/build/static/js/main.5e4bcbc6.chunk.js"
+    "revision": "9f7a135588679b3452a7",
+    "url": "/klesun-productions/build/static/js/main.1d49530d.chunk.js"
   },
   {
     "revision": "a621533bcd8839da5981",
@@ -22,6 +22,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "9e548762431669789e082ff5d9cac57b",
     "url": "/klesun-productions/build/static/media/check_icon.9e548762.svg"
+  },
+  {
+    "revision": "dbc115aa6ad6bf58d7f49dfaeddc1597",
+    "url": "/klesun-productions/build/static/media/github-logo-edited.dbc115aa.svg"
   },
   {
     "revision": "357c79fbdc946f7d80eb34d69f6d43fd",

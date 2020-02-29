@@ -19,7 +19,7 @@ function Header() {
             <header className={styles.header}>
                 <div className={classNames(styles.container, styles.headerContainer)}>
                     <div className={styles.logoContainer}>
-                        <a href='/' className={styles.logoLink}>
+                        <a href='https://klesun-productions.com/' className={styles.logoLink}>
                             <span className={styles.logoImage} />
                             <span className={styles.logoTitle}>klesun-productions</span>
                         </a>

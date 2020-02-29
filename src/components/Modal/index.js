@@ -15,6 +15,8 @@ const softwareKind = [
     {title: 'Desktop app', value: 'desktop'},
     {title: 'Android app', value: 'android'},
     {title: 'Plugin', value: 'plugin'},
+    {title: 'Library', value: 'lib'},
+    {title: 'Server', value: 'server'},
     {title: 'Other', value: 'other'},
 ];
 
@@ -212,7 +214,7 @@ function Modal (props) {
                                                         <div className={styles.bodyCol} style={{justifyContent: 'flex-start'}}>
                                                             <label className={styles.offPriceCheckbox}>
                                                                 <input type='checkbox' checked={offPrice} onChange={handleOffPrice}/>
-                                                                <span>Publish sources (Tick to get 20% off price)</span>
+                                                                <span>Allow publish as Open Source (Tick to get 20% off price)</span>
                                                             </label>
                                                         </div>
                                                     </div>

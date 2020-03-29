@@ -151,17 +151,18 @@
         display: flex;
         justify-content: center;
         flex: 1;
+        position: relative;
       }
     }
   }
 }
 
 .descriptionWrapper {
-
+  position: relative;
 }
 
-.offPriceCheckbox {
-  margin: 0 24px;
+.checkbox {
+  margin: 4px 24px;
   font-size: 14px;
   display: flex;
   align-items: center;
@@ -193,7 +194,7 @@
   width: 100%;
   padding-bottom: 4px;
   line-height: 22px;
-  color: #731b3c;
+  color:  var(--font-color);
   border-bottom: 1px solid #731b3c;
   cursor: text;
   max-height: 160px;
@@ -201,8 +202,40 @@
   overflow-x: hidden;
   word-wrap: break-word;
   resize: none;
+  font-size: 14px;
 
   &:focus {
     outline: none;
+  }
+
+  &.invalid {
+    border-bottom-color: #fd400b;
+  }
+}
+
+.invalidDescr {
+  position: absolute;
+  bottom: -20px;
+  pointer-events: none;
+  user-select: none;
+
+  &.typeInput {
+    left: 24px
+  }
+
+  .invalidText {
+    font-size: 12px;
+    color: #fd400b;
+  }
+}
+
+.descriptionPlaceholder {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  top: 0;
+
+  .placeholder {
+    font-size: 14px;
   }
 }

@@ -4,7 +4,7 @@ import classNames from "classnames";
 import {ArrowDown} from "../Icons";
 
 function Select(props) {
-    const { options, value, onChange } = props;
+    const { options, value, onChange, placeholder, style } = props;
     const [popupOpen, setPopupOpen] = useState(false);
     const popupRef = useRef(null);
 
@@ -35,6 +35,7 @@ function Select(props) {
                 style={{display: 'none'}}
                 readOnly
             >
+                <option value="-1">{placeholder}</option>
                 {
                     options.map( (el, i) => (
                         <option key={i} value={el.value}>{el.title}</option>
@@ -44,9 +45,10 @@ function Select(props) {
             <div
                 className={styles.selectBody}
                 onClick={ () => setPopupOpen(prev => !prev) }
+                style={{...style}}
             >
                 <div className={styles.selectContainer}>
-                    <span className={styles.selectTitle}>{getOptionName()}</span>
+                    <span className={styles.selectTitle}>{value === -1 ? placeholder : getOptionName()}</span>
                     <span className={styles.arrowIcon}>
                         <ArrowDown style={{height: '10px', width: '10px', color: 'rgba(115, 27, 60, 1)'}}/>
                     </span>

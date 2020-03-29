@@ -372,15 +372,6 @@ function Modal (props) {
                                                                     onFocus={handleDescriptionFocus}
                                                                     onBlur={handleDescriptionFocusOut}
                                                                 />
-                                                                {/*<div
-                                                                    onFocus={handleDescriptionFocus}
-                                                                    onBlur={handleDescriptionFocusOut}
-                                                                    onInput={handleDescription}
-                                                                    className={classNames(styles.description, invalid.descriptionValue ? styles.invalid : null)}
-                                                                    contentEditable={true}
-                                                                    placeholder='Free-Form Description'
-                                                                    dangerouslySetInnerHTML={{__html: descriptionHTML}}
-                                                                />*/}
                                                                 {
                                                                     invalid.descriptionValue
                                                                         ? (

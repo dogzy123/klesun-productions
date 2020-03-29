@@ -77,10 +77,10 @@
 
   .headerTitle {
     padding: 8px 32px;
-    border-bottom: 2px solid #731b3c;
+    border-bottom: 2px solid #000;
 
     & > span {
-      color: #731b3c;
+      color: #000;
       font-size: 24px;
     }
   }
@@ -214,7 +214,7 @@
   padding-bottom: 4px;
   line-height: 22px;
   color:  var(--font-color);
-  border-bottom: 1px solid #731b3c;
+  border-bottom: 1px solid #2f2c08;
   cursor: text;
   max-height: 137px;
   overflow-y: scroll;

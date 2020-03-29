@@ -1,19 +1,20 @@
 :root {
-  --font-color: #3e1927;
+  --font-color: #736c1a;
   --primary-color: #332030;
-  --top-line-color: #7a4772;
-  --logo-line-color: #731b3c;
+  --top-line-color: #918840;
+  --logo-line-color: #000;
+  --logo-title-color: #aba018;
   --intro-section-primary-text-color: var(--primary-color);
-  --intro-section-secondary-text-color: #7b7b7b;
-  --project-list-link-color: #681e5c;
-  --project-list-link-hover-color: var(--btn-primary-hover-color);
-  --btn-primary-color: #731b3c;
-  --btn-primary-hover-color: #c53e71;
+  --intro-section-secondary-text-color: #bdad3c;
+  --project-list-link-color: #756c26;
+  --project-list-link-hover-color: #d4c239;
+  --btn-primary-color: #867b28;
+  --btn-primary-hover-color: #bfb148;
   --header-background-color: #f9f9f9;
   --header-border-color: #d4d4d4;
   --foter-text-color: #fff;
-  --footer-background-color: var(--primary-color);
-  --github-hover-color: #b73b6a;
+  --footer-background-color: #332a20;
+  --github-hover-color: #a79a23;
 }
 
 body {

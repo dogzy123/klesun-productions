@@ -21,7 +21,8 @@ function Header() {
                     <div className={styles.logoContainer}>
                         <a href='https://klesun-productions.com/' className={styles.logoLink}>
                             <span className={styles.logoImage} />
-                            <span className={styles.logoTitle}>klesun-productions</span>
+                            <span className={styles.logoTitleFirst}>klesun-</span>
+                            <span className={styles.logoTitleLast}>productions</span>
                         </a>
                     </div>
                     <div className={styles.headerBlockDivider} />

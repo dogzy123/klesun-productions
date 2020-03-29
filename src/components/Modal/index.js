@@ -8,6 +8,7 @@ const jobKind = [
     {title: 'Create new app', value: 'create'},
     {title: 'Improve existing app', value: 'improve'},
     {title: 'Consultation', value: 'consultation'},
+    {title: 'Other', value: 'other'},
 ];
 
 const softwareKind = [
@@ -59,6 +60,21 @@ function Modal (props) {
         if (!descriptionValue || descriptionValue.length < 1)
         {
             invalids.descriptionValue = true;
+        }
+
+        if (!jobValue || jobValue === -1)
+        {
+            invalids.jobValue = true;
+        }
+
+        if (!softwareValue || softwareValue === -1)
+        {
+            invalids.softwareValue = true;
+        }
+
+        if (!workPrice || workPrice.length < 1)
+        {
+            invalids.workPrice = true;
         }
 
         if (Object.keys(invalids).length > 0)
@@ -121,10 +137,12 @@ function Modal (props) {
 
     const handleJobChange = value => {
         setJobValue(value);
+        setInvalid( prev => ({...prev, jobValue: false}) );
     };
 
     const handleSoftwareChange = value => {
         setSoftwareValue(value);
+        setInvalid( prev => ({...prev, softwareValue: false}) );
     };
 
     const handleCurrencyChange = value => {
@@ -191,12 +209,12 @@ function Modal (props) {
         if (open)
         {
             document.body.addEventListener('keydown', closeOnEscape);
-            document.body.addEventListener('mouseup', closeOnClick);
+            document.body.addEventListener('mousedown', closeOnClick);
         }
 
         return () => {
             document.body.removeEventListener('keydown', closeOnEscape);
-            document.body.removeEventListener('mouseup', closeOnClick);
+            document.body.removeEventListener('mousedown', closeOnClick);
             window.removeEventListener('resize', handleDescriptionWidth);
         };
     }, [open] );
@@ -279,7 +297,17 @@ function Modal (props) {
                                                                 onChange={handleJobChange}
                                                                 options={jobKind}
                                                                 placeholder='Job Kind'
+                                                                invalid={invalid.jobValue}
                                                             />
+                                                            {
+                                                                invalid.jobValue
+                                                                    ? (
+                                                                        <div className={classNames(styles.invalidDescr, styles.typeInput)}>
+                                                                            <span className={styles.invalidText}>Please select Job Kind!</span>
+                                                                        </div>
+                                                                    )
+                                                                    : null
+                                                            }
                                                         </div>
                                                         <div className={styles.bodyCol}>
                                                             <Select
@@ -287,13 +315,23 @@ function Modal (props) {
                                                                 onChange={handleSoftwareChange}
                                                                 options={softwareKind}
                                                                 placeholder='Software Kind'
+                                                                invalid={invalid.softwareValue}
                                                             />
+                                                            {
+                                                                invalid.softwareValue
+                                                                    ? (
+                                                                        <div className={classNames(styles.invalidDescr, styles.typeInput)}>
+                                                                            <span className={styles.invalidText}>Please select Software Kind!</span>
+                                                                        </div>
+                                                                    )
+                                                                    : null
+                                                            }
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div className={classNames(styles.bodyRow, submitted ? styles.modalFadeOut : null)}>
-                                                    <div className={styles.bodyRowContainer}>
-                                                        <div className={styles.bodyCol} ref={columnRef}>
+                                                    <div className={styles.bodyRowContainer} style={{padding: '8px 24px'}}>
+                                                        <div className={styles.bodyCol} ref={columnRef} style={{flexDirection: 'column', alignItems: 'center'}}>
                                                             <div className={styles.descriptionWrapper} style={{width: `${descriptionWidth}px`}}>
                                                                 <div
                                                                     onFocus={handleDescriptionFocus}
@@ -326,26 +364,48 @@ function Modal (props) {
                                                     </div>
                                                 </div>
                                                 <div className={classNames(styles.bodyRow, submitted ? styles.modalFadeOut : null)}>
+                                                    <div className={styles.bodyRowContainer} style={{padding: '8px 24px'}}>
+                                                        <div className={styles.bodyCol} style={{justifyContent: 'flex-start', flexDirection: 'column'}}>
+                                                            <label className={styles.checkbox}>
+                                                                <input type='checkbox' checked={publishDescription} onChange={handlePublishDescription}/>
+                                                                <span>Allow publishing description</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className={classNames(styles.bodyRow, submitted ? styles.modalFadeOut : null)}>
                                                     <div className={styles.bodyRowContainer}>
                                                         <div className={styles.bodyCol}>
                                                             <input
-                                                                className={classNames(styles.klesunInput, name.length ? styles.klesunInputActive : null)}
+                                                                className={classNames(styles.klesunInput)}
                                                                 value={workHours}
-                                                                placeholder='Est. work in hours'
+                                                                placeholder='Est. amount of work in hours'
                                                                 onChange={e => setWorkHours(e.target.value)}
                                                                 style={{marginRight: 12}}
                                                             />
                                                         </div>
                                                         <div className={styles.bodyCol}>
                                                             <input
-                                                                className={classNames(styles.klesunInput, email.length ? styles.klesunInputActive : null)}
+                                                                className={classNames(styles.klesunInput, invalid.workPrice ? styles.invalid : null)}
                                                                 value={workPrice}
                                                                 type='number'
                                                                 step='0.01'
-                                                                placeholder='Est. price'
-                                                                onChange={e => setWorkPrice(e.target.value)}
+                                                                placeholder='Est. price for completed work'
+                                                                onChange={e => {
+                                                                    setInvalid( prev => ({...prev, workPrice: false}) );
+                                                                    setWorkPrice(e.target.value);
+                                                                }}
                                                                 style={{marginRight: 12, marginLeft: 12}}
                                                             />
+                                                            {
+                                                                invalid.workPrice
+                                                                    ? (
+                                                                        <div className={styles.invalidDescr} style={{left: 14}}>
+                                                                            <span className={styles.invalidText}>Price is mandatory field</span>
+                                                                        </div>
+                                                                    )
+                                                                    : null
+                                                            }
                                                         </div>
                                                         <div className={styles.bodyCol}>
                                                             <Select
@@ -362,11 +422,7 @@ function Modal (props) {
                                                         <div className={styles.bodyCol} style={{justifyContent: 'flex-start', flexDirection: 'column'}}>
                                                             <label className={styles.checkbox}>
                                                                 <input type='checkbox' checked={offPrice} onChange={handleOffPrice}/>
-                                                                <span>Allow publish as Open Source (Tick to get 20% off price)</span>
-                                                            </label>
-                                                            <label className={styles.checkbox}>
-                                                                <input type='checkbox' checked={publishDescription} onChange={handlePublishDescription}/>
-                                                                <span>Allow publishing description</span>
+                                                                <span>Allow publishing as Open Source (Tick to get 20% off price)</span>
                                                             </label>
                                                         </div>
                                                     </div>

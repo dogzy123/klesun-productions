@@ -44,7 +44,7 @@
 
   @include md {
     width: 40%;
-    height: 575px;
+    height: 600px;
   }
 }
 
@@ -197,12 +197,13 @@
   color:  var(--font-color);
   border-bottom: 1px solid #731b3c;
   cursor: text;
-  max-height: 160px;
-  overflow-y: auto;
+  max-height: 114px;
+  overflow-y: scroll;
   overflow-x: hidden;
   word-wrap: break-word;
   resize: none;
   font-size: 14px;
+  min-height: 49px;
 
   &:focus {
     outline: none;

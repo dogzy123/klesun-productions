@@ -4,7 +4,7 @@ import classNames from "classnames";
 import {ArrowDown} from "../Icons";
 
 function Select(props) {
-    const { options, value, onChange, placeholder, style } = props;
+    const { options, value, onChange, placeholder, style, invalid } = props;
     const [popupOpen, setPopupOpen] = useState(false);
     const popupRef = useRef(null);
 
@@ -43,7 +43,7 @@ function Select(props) {
                 }
             </select>
             <div
-                className={styles.selectBody}
+                className={classNames(styles.selectBody, invalid ? styles.invalidSelect : null)}
                 onClick={ () => setPopupOpen(prev => !prev) }
                 style={{...style}}
             >

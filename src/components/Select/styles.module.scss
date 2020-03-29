@@ -18,6 +18,10 @@
   .selectTitle {
     font-size: 14px;
   }
+
+  &.invalidSelect {
+    border-bottom-color: #fd400b;
+  }
 }
 
 .selectPopup {

@@ -48,6 +48,7 @@
 
     .logoTitleFirst {
       margin-left: 8px;
+      font-weight: 700;
 
       @include xs {
         display: none;
@@ -59,6 +60,9 @@
     }
 
     .logoTitleLast {
+      color: var(--logo-title-color);
+      font-weight: 700;
+
       @include xs {
         display: none;
       }
@@ -66,8 +70,6 @@
       @include sm {
         display: flex;
       }
-
-      color: var(--logo-title-color);
     }
 
     .logoImage {

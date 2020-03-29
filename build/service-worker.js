@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/klesun-productions/build/precache-manifest.e968b9d29c01771a2e33218850427ddf.js"
+  "/klesun-productions/build/precache-manifest.ac38aafc77843c0d2bea3681eb8d1adb.js"
 );
 
 self.addEventListener('message', (event) => {

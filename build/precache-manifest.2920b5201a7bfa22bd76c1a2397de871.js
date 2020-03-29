@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8d913ed75586d4d1450f8bd1439898c0",
+    "revision": "7c4bfedb5c794e0e732f24e219ffb3c3",
     "url": "/klesun-productions/build/index.html"
   },
   {
-    "revision": "a2934a135f9441d91cac",
-    "url": "/klesun-productions/build/static/css/main.c8c84f5d.chunk.css"
+    "revision": "2b95c57be58f311a06f0",
+    "url": "/klesun-productions/build/static/css/main.758b29b8.chunk.css"
   },
   {
     "revision": "d6d7a1044cbfa92b12e4",
     "url": "/klesun-productions/build/static/js/2.5d981fb2.chunk.js"
   },
   {
-    "revision": "a2934a135f9441d91cac",
-    "url": "/klesun-productions/build/static/js/main.5628782a.chunk.js"
+    "revision": "2b95c57be58f311a06f0",
+    "url": "/klesun-productions/build/static/js/main.7814e2dd.chunk.js"
   },
   {
     "revision": "a621533bcd8839da5981",
@@ -30,5 +30,9 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "357c79fbdc946f7d80eb34d69f6d43fd",
     "url": "/klesun-productions/build/static/media/klesun-prod-logo.357c79fb.png"
+  },
+  {
+    "revision": "1b4f76197fe1bb621275e6872244670d",
+    "url": "/klesun-productions/build/static/media/klesun-productions.1b4f7619.svg"
   }
 ]);

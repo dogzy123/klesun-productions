@@ -3,6 +3,7 @@ import classNames from "classnames";
 import styles from "./style.module.scss";
 import Select from "../Select";
 import { ReactComponent as CheckIcon } from "../../images/check_icon.svg";
+import { ReactComponent as SubmittedKlesunLogo } from "../../images/klesun-productions.svg";
 import ContentEditable from "react-contenteditable";
 
 const jobKind = [
@@ -27,6 +28,11 @@ const currencies = [
     {title: 'USD', value: 'usd'},
     {title: 'EUR', value: 'eur'},
 ];
+
+const validateEmail = (str) => {
+    const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return regex.test(String(str).toLowerCase());
+};
 
 function Modal (props) {
     const { open, onClose } = props;
@@ -55,7 +61,7 @@ function Modal (props) {
     const validate = () => {
         const invalids = {};
 
-        if (!email || email.length < 1)
+        if (!email || email.length < 1 || !validateEmail(email))
         {
             invalids.email = true;
         }
@@ -243,10 +249,15 @@ function Modal (props) {
                                 {
                                     submitted && animationPassed && responseSuccess
                                         ? (
-                                            <div className={styles.submittedBlock}>
-                                                <CheckIcon />
-                                                <span>We will contact you shortly!</span>
-                                            </div>
+                                            <React.Fragment>
+                                                <div className={styles.submittedBlock}>
+                                                    <CheckIcon />
+                                                    <span>We will contact you shortly!</span>
+                                                </div>
+                                                <div className={styles.klesunLogoSubmitted}>
+                                                    <SubmittedKlesunLogo height={400} width='100%'/>
+                                                </div>
+                                            </React.Fragment>
                                         )
                                         : (
                                             <React.Fragment>
@@ -280,7 +291,7 @@ function Modal (props) {
                                                                 invalid.email
                                                                     ? (
                                                                         <div className={classNames(styles.invalidDescr, styles.typeInput)}>
-                                                                            <span className={styles.invalidText}>Email is mandatory field</span>
+                                                                            <span className={styles.invalidText}>Invalid email address</span>
                                                                         </div>
                                                                     )
                                                                     : null
@@ -390,6 +401,9 @@ function Modal (props) {
                                                                 <span>Estimated amount of work in hours</span>
                                                             </div>
                                                             <input
+                                                                type='number'
+                                                                min={1}
+                                                                step={1}
                                                                 className={classNames(styles.klesunInput)}
                                                                 value={workHours}
                                                                 onChange={e => setWorkHours(e.target.value)}

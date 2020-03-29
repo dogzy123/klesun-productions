@@ -101,10 +101,14 @@
   flex-direction: row;
 }
 
+.klesunLogoSubmitted {
+  flex: 1;
+}
+
 .submittedBlock {
   display: flex;
   justify-content: center;
-  margin-top: 64px;
+  margin: 32px;
 
   & > svg {
     margin-right: 12px;

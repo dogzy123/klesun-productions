@@ -111,14 +111,16 @@
 .submittedBlock {
   display: flex;
   justify-content: center;
-  margin: 32px;
+  margin: 32px 64px;
+  align-items: center;
 
   & > svg {
     margin-right: 12px;
+    min-width: 32px;
   }
 
   & > span {
-    font-size: 24px;
+    font-size: 18px;
     color: #000;
   }
 }

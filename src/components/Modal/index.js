@@ -263,7 +263,7 @@ function Modal (props) {
                                                 <React.Fragment>
                                                     <div className={styles.submittedBlock}>
                                                         <CheckIcon />
-                                                        <span>We will contact you shortly!</span>
+                                                        <span>Your request was placed successfully. I'll reply to you once I read it.</span>
                                                     </div>
                                                     <div className={styles.klesunLogoSubmitted}>
                                                         <SubmittedKlesunLogo height={400} width='100%'/>

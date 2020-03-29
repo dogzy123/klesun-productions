@@ -3,6 +3,7 @@ import classNames from "classnames";
 import styles from "./style.module.scss";
 import Select from "../Select";
 import { ReactComponent as CheckIcon } from "../../images/check_icon.svg";
+import { ReactComponent as CrossIcon } from "../../images/cross_icon.svg";
 import { ReactComponent as SubmittedKlesunLogo } from "../../images/klesun-productions.svg";
 import ContentEditable from "react-contenteditable";
 
@@ -57,6 +58,7 @@ function Modal (props) {
     const [responseSuccess, setResponseSuccess] = useState(undefined);
     const [invalid, setInvalid] = useState({});
     const [descriptionHTML, setDescriptionHTML] = useState('');
+    const [errorMsg, setErrorMsg] = useState('');
 
     const validate = () => {
         const invalids = {};
@@ -123,7 +125,14 @@ function Modal (props) {
             },
             body: JSON.stringify(form)
         })
-            .then( resp => resp.json() )
+            .then( resp => {
+                if (resp && resp.status === 200)
+                {
+                    return resp.json();
+                }
+
+                return Promise.reject(resp.statusText);
+            } )
             .then( response => {
                 if (response && response.status && response.status === "success")
                 {
@@ -134,6 +143,7 @@ function Modal (props) {
                 setProcessing(false);
             } )
             .catch( e => {
+                setErrorMsg(e.toString());
                 setSubmitted(true);
                 setProcessing(false);
             } )
@@ -247,18 +257,27 @@ function Modal (props) {
                             </div>
                             <div className={styles.modalContainerBody}>
                                 {
-                                    submitted && animationPassed && responseSuccess
-                                        ? (
-                                            <React.Fragment>
-                                                <div className={styles.submittedBlock}>
-                                                    <CheckIcon />
-                                                    <span>We will contact you shortly!</span>
-                                                </div>
-                                                <div className={styles.klesunLogoSubmitted}>
-                                                    <SubmittedKlesunLogo height={400} width='100%'/>
-                                                </div>
-                                            </React.Fragment>
-                                        )
+                                    submitted && animationPassed
+                                        ? responseSuccess
+                                            ? (
+                                                <React.Fragment>
+                                                    <div className={styles.submittedBlock}>
+                                                        <CheckIcon />
+                                                        <span>We will contact you shortly!</span>
+                                                    </div>
+                                                    <div className={styles.klesunLogoSubmitted}>
+                                                        <SubmittedKlesunLogo height={400} width='100%'/>
+                                                    </div>
+                                                </React.Fragment>
+                                            )
+                                            : (
+                                                <React.Fragment>
+                                                    <div className={styles.submittedBlock}>
+                                                        <CrossIcon style={{fill: 'rgb(204, 72, 28)'}}/>
+                                                        <span>{errorMsg}</span>
+                                                    </div>
+                                                </React.Fragment>
+                                            )
                                         : (
                                             <React.Fragment>
                                                 {

@@ -3,6 +3,7 @@ import classNames from "classnames";
 import styles from "./style.module.scss";
 import Select from "../Select";
 import { ReactComponent as CheckIcon } from "../../images/check_icon.svg";
+import ContentEditable from "react-contenteditable";
 
 const jobKind = [
     {title: 'Create new app', value: 'create'},
@@ -31,6 +32,7 @@ function Modal (props) {
     const { open, onClose } = props;
     const modalRef = useRef(null);
     const columnRef = useRef(null);
+    const contentEditableRef = useRef(null);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [workPrice, setWorkPrice] = useState('')
@@ -48,6 +50,7 @@ function Modal (props) {
     const [currency, setCurrency] = useState('usd');
     const [responseSuccess, setResponseSuccess] = useState(undefined);
     const [invalid, setInvalid] = useState({});
+    const [descriptionHTML, setDescriptionHTML] = useState('');
 
     const validate = () => {
         const invalids = {};
@@ -130,11 +133,6 @@ function Modal (props) {
             } )
     };
 
-    const handleDescription = e => {
-        setInvalid( prev => ({...prev, descriptionValue: false}) );
-        setDescriptionValue(e.target.innerText);
-    };
-
     const handleJobChange = value => {
         setJobValue(value);
         setInvalid( prev => ({...prev, jobValue: false}) );
@@ -162,7 +160,7 @@ function Modal (props) {
     };
 
     const handleDescriptionFocusOut = (e) => {
-        if (descriptionValue.length < 1)
+        if (e.target.innerText.length < 1)
         {
             setDescriptionPlaceholderShown(true);
         }
@@ -184,11 +182,6 @@ function Modal (props) {
         const closeOnClick = e => {
             if (modalRef.current && !modalRef.current.contains(e.target))
             {
-                if (!descriptionValue.length)
-                {
-                    setDescriptionPlaceholderShown(true);
-                }
-
                 onClose();
                 setSubmitted(false);
                 setAnimationPassed(false);
@@ -227,6 +220,12 @@ function Modal (props) {
             }, 450);
         }
     }, [submitted] );
+
+    const handleContentEditableChange = e => {
+        setInvalid( prev => ({...prev, descriptionValue: false}) );
+        setDescriptionHTML(e.target.value);
+        setDescriptionValue(contentEditableRef.current.innerText);
+    };
 
     return (
         open
@@ -330,17 +329,28 @@ function Modal (props) {
                                                     </div>
                                                 </div>
                                                 <div className={classNames(styles.bodyRow, submitted ? styles.modalFadeOut : null)}>
-                                                    <div className={styles.bodyRowContainer} style={{padding: '8px 24px'}}>
+                                                    <div className={styles.bodyRowContainer} style={{paddingBottom: 4}}>
                                                         <div className={styles.bodyCol} ref={columnRef} style={{flexDirection: 'column', alignItems: 'center'}}>
                                                             <div className={styles.descriptionWrapper} style={{width: `${descriptionWidth}px`}}>
-                                                                <div
+                                                                <ContentEditable
+                                                                    disabled={false}
+                                                                    tagName={'div'}
+                                                                    html={descriptionHTML}
+                                                                    className={classNames(styles.description, invalid.descriptionValue ? styles.invalid : null)}
+                                                                    onChange={handleContentEditableChange}
+                                                                    innerRef={contentEditableRef}
+                                                                    onFocus={handleDescriptionFocus}
+                                                                    onBlur={handleDescriptionFocusOut}
+                                                                />
+                                                                {/*<div
                                                                     onFocus={handleDescriptionFocus}
                                                                     onBlur={handleDescriptionFocusOut}
                                                                     onInput={handleDescription}
                                                                     className={classNames(styles.description, invalid.descriptionValue ? styles.invalid : null)}
                                                                     contentEditable={true}
                                                                     placeholder='Free-Form Description'
-                                                                />
+                                                                    dangerouslySetInnerHTML={{__html: descriptionHTML}}
+                                                                />*/}
                                                                 {
                                                                     invalid.descriptionValue
                                                                         ? (
@@ -364,11 +374,11 @@ function Modal (props) {
                                                     </div>
                                                 </div>
                                                 <div className={classNames(styles.bodyRow, submitted ? styles.modalFadeOut : null)}>
-                                                    <div className={styles.bodyRowContainer} style={{padding: '8px 24px'}}>
+                                                    <div className={styles.bodyRowContainer} style={{paddingTop: 8}}>
                                                         <div className={styles.bodyCol} style={{justifyContent: 'flex-start', flexDirection: 'column'}}>
                                                             <label className={styles.checkbox}>
                                                                 <input type='checkbox' checked={publishDescription} onChange={handlePublishDescription}/>
-                                                                <span>Allow publishing description</span>
+                                                                <span>Make public (for community comments and suggestions if applicable)</span>
                                                             </label>
                                                         </div>
                                                     </div>
@@ -376,26 +386,30 @@ function Modal (props) {
                                                 <div className={classNames(styles.bodyRow, submitted ? styles.modalFadeOut : null)}>
                                                     <div className={styles.bodyRowContainer}>
                                                         <div className={styles.bodyCol}>
+                                                            <div className={styles.topPlaceholder}>
+                                                                <span>Estimated amount of work in hours</span>
+                                                            </div>
                                                             <input
                                                                 className={classNames(styles.klesunInput)}
                                                                 value={workHours}
-                                                                placeholder='Est. amount of work in hours'
                                                                 onChange={e => setWorkHours(e.target.value)}
-                                                                style={{marginRight: 12}}
+                                                                style={{marginRight: 12, marginTop: 24}}
                                                             />
                                                         </div>
                                                         <div className={styles.bodyCol}>
+                                                            <div className={styles.topPlaceholder} style={{left: 12}}>
+                                                                <span>Estimated price for completed work</span>
+                                                            </div>
                                                             <input
                                                                 className={classNames(styles.klesunInput, invalid.workPrice ? styles.invalid : null)}
                                                                 value={workPrice}
                                                                 type='number'
                                                                 step='0.01'
-                                                                placeholder='Est. price for completed work'
                                                                 onChange={e => {
                                                                     setInvalid( prev => ({...prev, workPrice: false}) );
                                                                     setWorkPrice(e.target.value);
                                                                 }}
-                                                                style={{marginRight: 12, marginLeft: 12}}
+                                                                style={{marginRight: 12, marginLeft: 12, marginTop: 24}}
                                                             />
                                                             {
                                                                 invalid.workPrice
@@ -422,7 +436,7 @@ function Modal (props) {
                                                         <div className={styles.bodyCol} style={{justifyContent: 'flex-start', flexDirection: 'column'}}>
                                                             <label className={styles.checkbox}>
                                                                 <input type='checkbox' checked={offPrice} onChange={handleOffPrice}/>
-                                                                <span>Allow publishing as Open Source (Tick to get 20% off price)</span>
+                                                                <span>Allow publishing as Open Source (Tick to get 20% off the price)</span>
                                                             </label>
                                                         </div>
                                                     </div>

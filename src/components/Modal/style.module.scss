@@ -44,7 +44,7 @@
 
   @include md {
     width: 40%;
-    height: 600px;
+    height: 645px;
   }
 }
 
@@ -157,6 +157,18 @@
   }
 }
 
+.topPlaceholder {
+  position: absolute;
+  top: 0;
+  left: 24px;
+  pointer-events: none;
+  line-height: 10px;
+
+  & > span {
+    font-size: 12px;
+  }
+}
+
 .descriptionWrapper {
   position: relative;
 }
@@ -197,13 +209,13 @@
   color:  var(--font-color);
   border-bottom: 1px solid #731b3c;
   cursor: text;
-  max-height: 114px;
+  max-height: 137px;
   overflow-y: scroll;
   overflow-x: hidden;
   word-wrap: break-word;
   resize: none;
   font-size: 14px;
-  min-height: 49px;
+  min-height: 137px;
 
   &:focus {
     outline: none;

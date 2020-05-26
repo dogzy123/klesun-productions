@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../styles/main.module.scss";
+import classNames from 'classnames';
 import popularProjects from "../popularProjects";
 import GithubLogo from "../images/github-logo-edited.svg";
 
@@ -56,7 +57,7 @@ function Body() {
                                                                     {
                                                                         project.svg
                                                                             ? <project.icon className={styles.projectIconImage} />
-                                                                            : <img src={project.icon} className={styles.projectIconImage} />
+                                                                            : <span className={classNames(styles.projectIconImage, project.icon)} />
                                                                     }
                                                                 </span>
                                                                 <a href={project.product} rel="noopener noreferrer" target='_blank'>{project.title}</a>

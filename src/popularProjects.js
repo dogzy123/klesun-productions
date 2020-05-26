@@ -1,5 +1,4 @@
-import Heroine from "./images/heroine.png";
-import Soundfont from "./images/soundfont.png";
+import styles from  "./styles/project-icons.scss";
 import DeepAssoc from "./images/deep-assoc.svg";
 
 export default [
@@ -45,7 +44,7 @@ export default [
         title: 'Soundfont Player',
         product: 'https://klesun-productions.com/entry/midi_player/',
         src: 'https://github.com/klesun/klesun.github.io/tree/master/entry/midi_player',
-        icon: Soundfont
+        icon: styles.soundFont
     },
     {
         title: 'RPS imba',
@@ -65,6 +64,6 @@ export default [
     {
         title: 'riddle-needle',
         product: 'https://github.com/klesun/riddle-needle',
-        icon: Heroine
+        icon: styles.riddleNeedle
     }
 ];

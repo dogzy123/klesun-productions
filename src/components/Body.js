@@ -52,6 +52,13 @@ function Body() {
                                                     popularProjects.map( (project, i) => {
                                                         return (
                                                             <li key={i}>
+                                                                <span className={styles.projectIcon}>
+                                                                    {
+                                                                        project.svg
+                                                                            ? <project.icon className={styles.projectIconImage} />
+                                                                            : <img src={project.icon} className={styles.projectIconImage} />
+                                                                    }
+                                                                </span>
                                                                 <a href={project.product} rel="noopener noreferrer" target='_blank'>{project.title}</a>
                                                                 <span>({
                                                                     <a href={project.src} rel="noopener noreferrer" target='_blank'>src</a>

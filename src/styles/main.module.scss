@@ -198,7 +198,7 @@
     }
 
     .introSectionMainDescription {
-      margin-top: 42px;
+      margin-top: 36px;
     }
 
     .introSectionMain {
@@ -246,6 +246,19 @@
         display: flex;
         justify-content: flex-end;
         flex-direction: row;
+
+        .projectIcon {
+          position: absolute;
+          left: -40px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+
+        .projectIconImage {
+          width: 24px;
+          height: 24px;
+          image-rendering: pixelated;
+        }
 
         .popularProjectsContainer {
           position: relative;
@@ -317,9 +330,10 @@
           list-style: none;
 
           li {
-            padding: 2px 0;
+            padding: 4px 0;
             display: flex;
             justify-content: space-between;
+            position: relative;
 
             > a {
               margin-right: 4px;

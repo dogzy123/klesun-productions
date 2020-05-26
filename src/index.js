@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 import './styles/index.scss';
 import App from './App';
 
-ReactDOM.render(
-    <App />,
-    document.getElementById('klesun-productions-root')
-);
+window.__klesun_productions_init__ = () => {
+    ReactDOM.render(
+        <App />,
+        document.getElementById('klesun-productions-root')
+    )
+};

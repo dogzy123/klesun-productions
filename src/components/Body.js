@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../styles/main.module.scss";
 import popularProjects from "../popularProjects";
-import {ReactComponent as GithubLogo} from "../images/github-logo-edited.svg";
+import GithubLogo from "../images/github-logo-edited.svg";
 
 function Body() {
     return (

@@ -19,6 +19,7 @@
 
 body {
   margin: 0;
+  height: 100vh;
   padding-top: 72px; //fixed header
   font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -44,9 +45,4 @@ h2, h3, h4, h5, span, p {
 *:after,
 *::before {
   box-sizing: border-box;
-}
-
-.app {
-  overflow-x: hidden;
-  height: calc(100vh - 72px);
 }

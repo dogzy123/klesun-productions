@@ -2,9 +2,9 @@ import React, {useState, useEffect, useRef} from "react";
 import classNames from "classnames";
 import styles from "./style.module.scss";
 import Select from "../Select";
-import { ReactComponent as CheckIcon } from "../../images/check_icon.svg";
-import { ReactComponent as CrossIcon } from "../../images/cross_icon.svg";
-import { ReactComponent as SubmittedKlesunLogo } from "../../images/klesun-productions.svg";
+import CheckIcon from "../../images/check_icon.svg";
+import CrossIcon from "../../images/cross_icon.svg";
+import SubmittedKlesunLogo from "../../images/klesun-productions.svg";
 import ContentEditable from "react-contenteditable";
 
 const jobKind = [

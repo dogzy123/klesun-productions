@@ -23,7 +23,15 @@ module.exports = {
                 test: /\.scss$/i,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    'css-loader?modules=global',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: {
+                                mode: 'local',
+                                localIdentName: '[name]-[local]',
+                            }
+                        }
+                    },
                     'sass-loader',
                 ],
             },

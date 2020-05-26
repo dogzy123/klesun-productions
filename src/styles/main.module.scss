@@ -181,6 +181,11 @@
 
     .introSectionMainContainer {
       height: 100%;
+      align-items: center;
+      align-content: center;
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
 
       @include xs {
         padding: 32px;
@@ -188,6 +193,7 @@
 
       @include sm {
         padding: 64px;
+        padding-bottom: 32px;
       }
     }
 

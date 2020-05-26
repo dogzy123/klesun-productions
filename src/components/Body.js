@@ -30,13 +30,13 @@ function Body() {
                             <div className={styles.introSectionColumnContainer}>
                                 <div className={styles.introColumnContainerHeader}>
                                     <p>
-                                        We are writing web apps, desktop apps, android apps, scripts, games, graphic processing, sound processing, plugins, algorithms, optimization, consultation and much more else.
+                                        We make web apps, desktop apps, android apps, scripts, games, graphic processing, sound processing, plugins, algorithms, optimization, consultation and much more else.
                                     </p>
                                     <p>
                                         The job price is case-to-case matter of discussion, but in general it's around $20 per estimated working hour.
                                     </p>
                                     <p>
-                                        Our main selling point is that we aim for the mutual understanding and fast changes, so we organize work in such way, that you'll quickly get access to the scratch of the future app to look at it's appearance, click some buttons and give you the base for the feedback already in the early development stages.
+                                        Our main selling point is that we aim for the mutual understanding and fast changes. We'll do our best to give you first scratches of the future app as soon as possible, letting you actively participate in the development - look at app's appearance, click some buttons and voice your feedback instantly, so we could fine-tune behaviour to what you effectively want.
                                     </p>
                                 </div>
                             </div>
@@ -80,7 +80,7 @@ function Body() {
                         <div className={styles.lastSectionMainContainer}>
                             <div className={styles.secondarySectionMainDescription}>
                                 <p className={styles.lastSectionParagraph}>
-                                    To make an order, you can contact us on safronevev@gmail.com (email address subject to change)
+                                    To make an order, you can contact us at safronevev@gmail.com (email address subject to change)
                                 </p>
                             </div>
                             <div className={styles.introColumnContainerHeader}>

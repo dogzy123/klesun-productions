@@ -10,10 +10,8 @@ module.exports = {
     output : {
         path : path.resolve(__dirname , 'dist'),
         filename: 'kp.js',
-        publicPath: '/',
+        publicPath: './dist/',
     },
-
-    devtool: 'inline-source-map',
 
     mode: 'development',
 

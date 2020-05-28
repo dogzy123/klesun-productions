@@ -43,6 +43,11 @@
   }
 
   @include md {
+    width: 50%;
+    height: 700px;
+  }
+
+  @include lg {
     width: 40%;
     height: 645px;
   }
@@ -69,6 +74,15 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+
+  @include xs {
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+
+  @include md {
+    overflow: hidden;
+  }
 }
 
 .modalContainerHeader {
@@ -95,7 +109,14 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  margin: 0 32px;
+
+  @include xs {
+    margin: 16px 32px;
+  }
+
+  @include md {
+    margin: 0 32px;
+  }
 }
 
 .modalContainerBody,
@@ -162,7 +183,59 @@
         flex: 1;
         position: relative;
       }
+
+      .bodyEstimatedCol {
+        justify-content: flex-start;
+        align-items: center;
+      }
     }
+  }
+}
+
+.inputContainer {
+  width: 100%;
+  margin: 0 24px;
+  position: relative;
+}
+
+.inputPlaceholder {
+  font-size: 14px;
+  position: absolute;
+  top: 6px;
+  left: 0;
+}
+
+.leftPlaceholder {
+  line-height: 14px;
+  margin-left: 24px;
+
+  @include xs {
+    width: 150px;
+  }
+
+  @include md {
+    width: 120px;
+  }
+
+  @include lg {
+    width: 180px;
+  }
+
+  @include xl {
+    width: 230px;
+  }
+
+  & > span {
+    font-size: 14px;
+  }
+}
+
+.estimatedInput {
+  margin-right: 0;
+  width: 90px;
+
+  @include lg {
+    margin-left: 12px;
   }
 }
 

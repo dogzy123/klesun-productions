@@ -49,7 +49,7 @@
   &:focus {
     outline: none;
     box-shadow: none;
-    border-bottom-color: #731b3c;
+    border-bottom-color: var(--btn-primary-color);
 
     &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
       color: transparent;

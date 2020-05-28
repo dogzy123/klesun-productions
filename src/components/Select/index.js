@@ -4,7 +4,7 @@ import classNames from "classnames";
 import {ArrowDown} from "../Icons";
 
 function Select(props) {
-    const { options, value, onChange, placeholder, style, invalid } = props;
+    const { options, value, onChange, placeholder, style, invalid, required = false } = props;
     const [popupOpen, setPopupOpen] = useState(false);
     const popupRef = useRef(null);
 
@@ -48,36 +48,47 @@ function Select(props) {
                 style={{...style}}
             >
                 <div className={styles.selectContainer}>
-                    <span className={styles.selectTitle}>{value === -1 ? placeholder : getOptionName()}</span>
+                    <span className={styles.selectTitle}>
+                        {
+                            value === -1
+                                ? placeholder
+                                : getOptionName()
+                        }
+                        {
+                            value === -1 && required
+                                ? <span style={{color: 'red'}}>*</span>
+                                : null
+                        }
+                    </span>
                     <span className={styles.arrowIcon}>
                         <ArrowDown style={{height: '10px', width: '10px', color: 'rgba(115, 27, 60, 1)'}}/>
                     </span>
                 </div>
-            </div>
-            {
-                popupOpen
-                    ? (
-                        <div className={styles.selectPopup} ref={popupRef}>
-                            <div className={styles.selectPopupContainer}>
-                                {
-                                    options.map( (el, i) => (
-                                        <div
-                                            key={i}
-                                            className={styles.selectPopupItem}
-                                            onMouseUp={ () => {
-                                                onChange(el.value);
-                                                setPopupOpen(false);
-                                            } }
-                                        >
-                                            <span className={classNames(styles.selectPopupItemText, el.value === value ? styles.active : '')}>{el.title}</span>
-                                        </div>
-                                    ))
-                                }
+                {
+                    popupOpen
+                        ? (
+                            <div className={styles.selectPopup} ref={popupRef}>
+                                <div className={styles.selectPopupContainer}>
+                                    {
+                                        options.map( (el, i) => (
+                                            <div
+                                                key={i}
+                                                className={styles.selectPopupItem}
+                                                onMouseUp={ () => {
+                                                    onChange(el.value);
+                                                    setPopupOpen(false);
+                                                } }
+                                            >
+                                                <span className={classNames(styles.selectPopupItemText, el.value === value ? styles.active : '')}>{el.title}</span>
+                                            </div>
+                                        ))
+                                    }
+                                </div>
                             </div>
-                        </div>
-                    )
-                    : null
-            }
+                        )
+                        : null
+                }
+            </div>
         </React.Fragment>
     )
 }

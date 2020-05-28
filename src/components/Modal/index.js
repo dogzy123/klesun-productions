@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useRef} from "react";
 import classNames from "classnames";
 import styles from "./style.module.scss";
+import Input from "../Input";
 import Select from "../Select";
 import CheckIcon from "../../images/check_icon.svg";
 import CrossIcon from "../../images/cross_icon.svg";
@@ -292,19 +293,19 @@ function Modal (props) {
                                                 <div className={classNames(styles.bodyRow, submitted ? styles.modalFadeOut : null)}>
                                                     <div className={styles.bodyRowContainer}>
                                                         <div className={styles.bodyCol}>
-                                                            <input
-                                                                className={classNames(styles.klesunInput, name.length ? styles.klesunInputActive : null)}
+                                                            <Input
                                                                 value={name}
                                                                 placeholder='Name'
                                                                 onChange={e => setName(e.target.value)}
                                                             />
                                                         </div>
                                                         <div className={styles.bodyCol}>
-                                                            <input
-                                                                className={classNames(styles.klesunInput, invalid.email ? styles.invalid : null, email.length ? styles.klesunInputActive : null)}
+                                                            <Input
+                                                                className={invalid.email ? styles.invalid : null}
                                                                 value={email}
                                                                 placeholder='Email'
                                                                 onChange={handleEmail}
+                                                                required
                                                             />
                                                             {
                                                                 invalid.email
@@ -327,6 +328,7 @@ function Modal (props) {
                                                                 options={jobKind}
                                                                 placeholder='Job Kind'
                                                                 invalid={invalid.jobValue}
+                                                                required
                                                             />
                                                             {
                                                                 invalid.jobValue
@@ -345,6 +347,7 @@ function Modal (props) {
                                                                 options={softwareKind}
                                                                 placeholder='Software Kind'
                                                                 invalid={invalid.softwareValue}
+                                                                required
                                                             />
                                                             {
                                                                 invalid.softwareValue
@@ -385,7 +388,10 @@ function Modal (props) {
                                                                     descriptionPlaceholderShown
                                                                         ? (
                                                                             <div className={styles.descriptionPlaceholder}>
-                                                                                <span className={styles.placeholder}>Free-Form Description</span>
+                                                                                <span className={styles.placeholder}>
+                                                                                    Free-Form Description
+                                                                                    <span style={{color: 'red'}}>*</span>
+                                                                                </span>
                                                                             </div>
                                                                         )
                                                                         : null
@@ -405,52 +411,45 @@ function Modal (props) {
                                                     </div>
                                                 </div>
                                                 <div className={classNames(styles.bodyRow, submitted ? styles.modalFadeOut : null)}>
-                                                    <div className={styles.bodyRowContainer}>
-                                                        <div className={styles.bodyCol}>
-                                                            <div className={styles.topPlaceholder}>
+                                                    <div className={styles.bodyRowContainer} style={{padding: '8px 24px'}}>
+                                                        <div className={classNames(styles.bodyCol, styles.bodyEstimatedCol)}>
+                                                            <div className={styles.leftPlaceholder}>
                                                                 <span>Estimated amount of work in hours</span>
                                                             </div>
                                                             <input
                                                                 type='number'
                                                                 min={1}
                                                                 step={1}
-                                                                className={classNames(styles.klesunInput)}
+                                                                className={classNames(styles.klesunInput, styles.estimatedInput)}
                                                                 value={workHours}
                                                                 onChange={e => setWorkHours(e.target.value)}
-                                                                style={{marginRight: 12, marginTop: 24}}
                                                             />
                                                         </div>
-                                                        <div className={styles.bodyCol}>
-                                                            <div className={styles.topPlaceholder} style={{left: 12}}>
-                                                                <span>Estimated price for completed work</span>
+                                                    </div>
+                                                </div>
+                                                <div className={classNames(styles.bodyRow, submitted ? styles.modalFadeOut : null)}>
+                                                    <div className={styles.bodyRowContainer} style={{padding: '8px 24px'}}>
+                                                        <div className={classNames(styles.bodyCol, styles.bodyEstimatedCol)}>
+                                                            <div className={styles.leftPlaceholder}>
+                                                                <span>Estimated price for completed work<span style={{color: 'red'}}>*</span></span>
                                                             </div>
-                                                            <input
-                                                                className={classNames(styles.klesunInput, invalid.workPrice ? styles.invalid : null)}
+                                                            <Input
+                                                                containerClassname={styles.estimatedInput}
+                                                                className={classNames(invalid.workPrice ? styles.invalid : null)}
                                                                 value={workPrice}
                                                                 type='number'
                                                                 step='0.01'
-                                                                onChange={e => {
+                                                                isInvalid={invalid.workPrice}
+                                                                onChange={ e => {
                                                                     setInvalid( prev => ({...prev, workPrice: false}) );
                                                                     setWorkPrice(e.target.value);
-                                                                }}
-                                                                style={{marginRight: 12, marginLeft: 12, marginTop: 24}}
+                                                                } }
                                                             />
-                                                            {
-                                                                invalid.workPrice
-                                                                    ? (
-                                                                        <div className={styles.invalidDescr} style={{left: 14}}>
-                                                                            <span className={styles.invalidText}>Price is mandatory field</span>
-                                                                        </div>
-                                                                    )
-                                                                    : null
-                                                            }
-                                                        </div>
-                                                        <div className={styles.bodyCol}>
                                                             <Select
                                                                 value={currency}
                                                                 onChange={handleCurrencyChange}
                                                                 options={currencies}
-                                                                style={{marginLeft: 12}}
+                                                                style={{width: 50, marginLeft: 12}}
                                                             />
                                                         </div>
                                                     </div>

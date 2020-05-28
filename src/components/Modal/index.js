@@ -295,15 +295,21 @@ function Modal (props) {
                                                         <div className={styles.bodyCol}>
                                                             <Input
                                                                 value={name}
-                                                                placeholder='Name'
+                                                                placeholder='anonymous'
+                                                                label='Optional publicly visible name'
+                                                                labelStyle={{minWidth: '195px'}}
                                                                 onChange={e => setName(e.target.value)}
                                                             />
                                                         </div>
+                                                    </div>
+                                                </div>
+                                                <div className={classNames(styles.bodyRow, submitted ? styles.modalFadeOut : null)}>
+                                                    <div className={styles.bodyRowContainer}>
                                                         <div className={styles.bodyCol}>
                                                             <Input
                                                                 className={invalid.email ? styles.invalid : null}
                                                                 value={email}
-                                                                placeholder='Email'
+                                                                label='Email'
                                                                 onChange={handleEmail}
                                                                 required
                                                             />
@@ -403,9 +409,9 @@ function Modal (props) {
                                                 <div className={classNames(styles.bodyRow, submitted ? styles.modalFadeOut : null)}>
                                                     <div className={styles.bodyRowContainer} style={{paddingTop: 8}}>
                                                         <div className={styles.bodyCol} style={{justifyContent: 'flex-start', flexDirection: 'column'}}>
-                                                            <label className={styles.checkbox}>
+                                                            <label className={classNames(styles.publicCheckbox, styles.checkbox)}>
                                                                 <input type='checkbox' checked={publishDescription} onChange={handlePublishDescription}/>
-                                                                <span>Make public (for community comments and suggestions if applicable)</span>
+                                                                <span>Make public. For community comments and suggestions if applicable.</span>
                                                             </label>
                                                         </div>
                                                     </div>

@@ -49,7 +49,7 @@
 
   @include lg {
     width: 40%;
-    height: 645px;
+    height: 710px;
   }
 }
 
@@ -198,11 +198,21 @@
   position: relative;
 }
 
+.inputContainerLeft {
+  display: flex;
+  align-items: center;
+}
+
 .inputPlaceholder {
   font-size: 14px;
   position: absolute;
   top: 6px;
   left: 0;
+
+  &.left {
+    position: initial;
+    margin-right: 16px;
+  }
 }
 
 .leftPlaceholder {
@@ -267,10 +277,19 @@
   font-size: 14px;
   display: flex;
   align-items: center;
-  color: #731b3c;
 
   & > span {
     line-height: 20px;
+  }
+}
+
+.publicCheckbox {
+  justify-content: flex-end;
+  align-items: flex-start;
+
+  & > span {
+    text-align: right;
+    max-width: 356px;
   }
 }
 

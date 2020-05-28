@@ -239,6 +239,13 @@
   }
 }
 
+.priceWithDiscount {
+  position: absolute;
+  font-size: 14px;
+  bottom: -24px;
+  color: var(--discount-price-color);
+}
+
 .topPlaceholder {
   position: absolute;
   top: 0;

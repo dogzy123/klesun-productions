@@ -439,6 +439,15 @@ function Modal (props) {
                                                                 value={workPrice}
                                                                 type='number'
                                                                 step='0.01'
+                                                                content={
+                                                                    workPrice > 0 && offPrice
+                                                                        ? (
+                                                                            <div className={styles.priceWithDiscount}>
+                                                                                {parseFloat(parseFloat(workPrice) - parseFloat(parseFloat(workPrice) * 20 / 100).toFixed(2)).toFixed(2)}
+                                                                            </div>
+                                                                        )
+                                                                        : null
+                                                                }
                                                                 isInvalid={invalid.workPrice}
                                                                 onChange={ e => {
                                                                     setInvalid( prev => ({...prev, workPrice: false}) );

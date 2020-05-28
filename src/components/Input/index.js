@@ -3,7 +3,7 @@ import styles from "../Modal/style.module.scss";
 import classNames from "classnames";
 
 export default function Input (props) {
-    const {value, onChange, style, required, className, placeholder, containerClassname, isInvalid, ...other} = props;
+    const {value, onChange, style, required, className, placeholder, containerClassname, isInvalid, content, ...other} = props;
     const [placeholderShown, setPlaceholderShown] = useState(true);
 
     useEffect( () => {
@@ -33,6 +33,7 @@ export default function Input (props) {
                 onBlur={handleBlur}
                 {...other}
             />
+            {content}
             {
                 isInvalid
                     ? (

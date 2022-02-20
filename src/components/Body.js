@@ -34,7 +34,7 @@ function Body() {
                                         We make web apps, desktop apps, android apps, scripts, games, graphic processing, sound processing, plugins, algorithms, optimization, consultation and much more else.
                                     </p>
                                     <p>
-                                        The job price is case-to-case matter of discussion, but in general it's around $20 per estimated working hour.
+                                        The job price is case-to-case matter of discussion, but in general it's around $40 per estimated working hour.
                                     </p>
                                     <p>
                                         Our main selling point is that we aim for the mutual understanding and fast changes. We'll do our best to give you first scratches of the future app as soon as possible, letting you actively participate in the development - look at app's appearance, click some buttons and voice your feedback instantly, so we could fine-tune behaviour to what you effectively want.
